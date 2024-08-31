@@ -75,3 +75,12 @@ body {
 	background-color: #ddd;
 	color: black;
 }
+
+/* About Me Page */  
+#Table{
+	margin-left: 10px;
+}
+
+.indent {
+	margin-left: 8px;
+}
