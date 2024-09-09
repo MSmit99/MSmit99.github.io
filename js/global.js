@@ -2,8 +2,8 @@
 	window.addEventListener("load", initGlobal);
 
 	function initGlobal() {
-		$("#navbar").load('navbar.html');
-		$("#header").load('header.html');
-		$("#footer").load('footer.html');
+		$("#navbar").load('common/navbar.html');
+		$("#header").load('common/header.html');
+		$("#footer").load('common/footer.html');
 	}
 })();
