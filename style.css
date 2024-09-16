@@ -122,12 +122,12 @@ h1 {
 	border-color: #800080;
 
 	padding: 20px 20px 0 20px;
-	min-width: 300px;
-	width: 300px;
-	min-height: 230px;
-	height: 230px;
+	min-width: 250px;
+	width: auto;
+	min-height: 150px;
+	height: auto;
 
-	font-size: 25px;
+	font-size: 30px;
     font-family: "Roboto", sans-serif;
 }
 
@@ -146,14 +146,21 @@ h1 {
 .icons {
     display: flex;
 	justify-content: center;
+	align-items: center;
     margin-top: auto;
 	margin-bottom: 5px;
-	width: 40px;
-	height: auto;
 }
 
-.icons i {
+.icons i{
 	font-size: 64px;
+}
+
+/* Image Size */
+.icons img {
+	display: flex;
+	width: 50px;
+    height: auto;
+	padding: 2px;
 }
 
 /* Project Images & Italic Text */
@@ -169,7 +176,7 @@ h1{
 	font-family: "Noto Sans", "Roboto", sans-serif;
 }
 
-#school{
+.school{
 	padding-top: 30px;
 }
 
@@ -188,17 +195,48 @@ h1{
 	min-width: 250px;
 	width: 300px;
 	min-height: 180px;
-	height: 230px;
+	height: auto;
 
 	font-size: 25px;
     font-family: "Roboto", sans-serif;
 }
 
-/* Keeps Icons in Box */
-.class-box p {
-	margin-bottom: 0;
+.math{
+	border-color: #EE0000;
+	padding-bottom: 20px;
 }
 
+.current{
+	border-color: #FFA500;
+	padding-bottom: 20px;
+}
+
+.class-box p {
+	margin-bottom: 0;
+	text-decoration: underline;
+}
+
+.class-box a{
+	text-decoration: underline;
+	color: #FFFFFF;
+	text-align: center;
+}
+
+.class-box a:hover{
+	background-color: #2b2b2b;
+	color: #00eeee;
+	cursor: pointer;
+}
+
+.class-box p.description{
+	font-size: 15px;
+	margin-bottom: 0;
+	text-decoration: none;
+}
+
+.class-box a.small {
+	font-size: 22px;
+}
 
 /* About Me Page */  
 #Table{
