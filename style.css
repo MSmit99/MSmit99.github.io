@@ -20,14 +20,15 @@
 	font-size: 18px;
 }
 
-/* Hovering over Navbar items */
+/* Hovering over Navbar Items */
 #navbar a:hover {
 	background-color: #FFFFFF;
 	color: #000000;
 }
 
-/* Header */
-.header, .footer{
+
+/* Header & Footer */
+.head_foot {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -35,7 +36,7 @@
 }
 
 /* Profile Picture */
-#profile{
+#profile {
 	object-fit: cover;
 	border-radius: 50%;
     border-color: #800080;
@@ -47,17 +48,64 @@
 }
 
 /* Top Icons */
-.github,
-#linkedin {
+.github, #linkedin {
 	color: #FFFFFF;
 	font-size: 2em;
 	text-decoration: none;
 }
 
-/* Hovering over LinkedIn item */
+/* Hovering over LinkedIn Item */
 #linkedin:hover {
 	color: var(--bs-link-hover-color);
 }
+
+
+/* Scrolling Buttons */
+/* Enables smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+.button-container {
+    text-align: center;
+}
+
+/* Scrolling Button */
+.scroll-button {
+    width: fit-content;
+	display: inline-block;
+    text-align: center;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 5px;
+	border: solid white 1px;
+}
+
+/* Hovering over Scrolling Button */
+.scroll-button:hover {
+    background-color: #FFFFFF;
+	color: #000000;
+}
+
+.scroll-button.projects {
+	background-color: #800080;
+}
+
+.scroll-button.current {
+	background-color: #FFA500;
+}
+
+.scroll-button.cs {
+	background-color: #00EEFF;
+}
+
+.scroll-button.math {
+	background-color: #EE0000;
+}
+
 
 /* Body */
 body {
@@ -67,48 +115,45 @@ body {
 	color: #FFFFFF;
 }
 
-html {
-    scroll-behavior: smooth; /* Enables smooth scrolling */
+
+/* Section Title */
+div > .section_title {
+	text-align: center;
+	font-family: "Noto Sans", "Roboto", sans-serif;
+	padding-top: 30px;
 }
 
-/* Project Padding */
-.section2 {
-	padding: 20px;
-}
-
-.scroll-button {
-    width: fit-content;
-	display: block;
-    text-align: center;
-    padding: 10px 20px;
-    background-color: #800080;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
-    margin: 20px auto;
-	border: solid white 1px
-}
-
-.scroll-button:hover {
-    background-color: #FFFFFF;
-	color: #000000;
-}
-
-/* Projects */
-/* Title for Projects Section */
-h1 {
-	margin: 15px 0;
-}
-
-/* Project Box = flex item that wraps*/
+/* Flex Container that wraps*/
 .flex-wrap {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
-	column-gap: 80px;
-	row-gap: 40px;
+	column-gap: 60px;
+	row-gap: 30px;
 }
+
+/* Icons */
+.icons {
+    display: flex;
+	justify-content: center;
+	align-items: center;
+    margin-top: auto;
+	margin-bottom: 5px;
+}
+
+/* Devicon Images */
+.icons i {
+	font-size: 50px;
+}
+
+/* Imported Images */
+.icons img {
+	display: flex;
+	width: 50px;
+    height: auto;
+	padding: 2px;
+}
+
 
 /* Project Box */
 .project-box {
@@ -121,7 +166,7 @@ h1 {
 	border-radius: 10%;
 	border-color: #800080;
 
-	padding: 20px 20px 0 20px;
+	padding: 15px;
 	min-width: 250px;
 	width: auto;
 	min-height: 150px;
@@ -131,36 +176,20 @@ h1 {
     font-family: "Roboto", sans-serif;
 }
 
-/* Hovering over Project Box item */
+/* Hovering over Project Box Item */
 .project-box:hover {
-	background-color: #2b2b2b;
+	background-color: #2B2B2B;
 	cursor: pointer;
 }
 
-/* Keeps Icons in Box */
-.project-box p {
+/* Project Titles */
+.project-box > .project_title {
 	margin-bottom: 0;
 }
 
-/* Icons */
-.icons {
-    display: flex;
-	justify-content: center;
-	align-items: center;
-    margin-top: auto;
-	margin-bottom: 5px;
-}
-
-.icons i{
-	font-size: 64px;
-}
-
-/* Image Size */
-.icons img {
-	display: flex;
-	width: 50px;
-    height: auto;
-	padding: 2px;
+/* 2nd Title = Smaller */
+.project_title + .project_title {
+	font-size: 0.8em;
 }
 
 /* Project Images & Italic Text */
@@ -171,14 +200,6 @@ h1 {
 	margin: 0 2px 0 2px;
 }
 
-h1{
-	text-align: center;
-	font-family: "Noto Sans", "Roboto", sans-serif;
-}
-
-.school{
-	padding-top: 30px;
-}
 
 /* Class Box */
 .class-box {
@@ -189,9 +210,8 @@ h1{
 	border: solid;
 	border-width: 2px;
 	border-radius: 10%;
-	border-color: #800080;
 
-	padding: 20px 20px 0 20px;
+	padding: 15px;
 	min-width: 250px;
 	width: 300px;
 	min-height: 180px;
@@ -201,48 +221,41 @@ h1{
     font-family: "Roboto", sans-serif;
 }
 
-.math{
-	border-color: #EE0000;
-	padding-bottom: 20px;
-}
-
-.current{
+/* Picks Border Colors based on Course Type */
+.class-box.current {
 	border-color: #FFA500;
-	padding-bottom: 20px;
 }
 
-.class-box p {
-	margin-bottom: 0;
-	text-decoration: underline;
+.class-box.cs{
+	border-color: #00EEFF;
 }
 
-.class-box a{
+.class-box.math {
+	border-color: #EE0000;
+}
+
+/* Course Titles */
+.class-box .course_title {
 	text-decoration: underline;
 	color: #FFFFFF;
 	text-align: center;
 }
 
-.class-box a:hover{
+/* Hovering over Course Title */
+.class-box .course_title:hover {
 	background-color: #2b2b2b;
-	color: #00eeee;
+	color: #00EEEE;
 	cursor: pointer;
 }
 
-.class-box p.description{
+/* Description of Courses */
+.class-box .description {
 	font-size: 15px;
-	margin-bottom: 0;
+	margin-bottom: 3px;
 	text-decoration: none;
 }
 
-.class-box a.small {
+/* Reduce Font Size of Long Name Courses */
+.class-box .long_name {
 	font-size: 22px;
-}
-
-/* About Me Page */  
-#Table{
-	margin-left: 10px;
-}
-
-.indent {
-	margin-left: 8px;
 }

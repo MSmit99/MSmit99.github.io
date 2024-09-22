@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-  <!-- Style Sheet: Mine + Devicons -->
+  <!-- Style Sheets -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicons@2.0.1/css/devicons.min.css"> 
 
@@ -36,16 +36,17 @@
   <nav id="navbar"></nav>
   <header id="header"></header>
 
-  <!-- Clickable Box -->
-  <a href="#projects" class="scroll-button">↓ Projects ↓</a>
+  <div class="button-container">
+    <a href="#projects" class="scroll-button projects">↓ Projects ↓</a>
+  </div>
 
-  <div id = "projects" class="section2">
-    <h1>Featured Projects</h1>
+  <div id = "projects">
+    <h1 class = "section_title">Featured Projects</h1>
 
     <div class="flex-wrap">
       <div class="project-box" id="junk_app">
-        <p>Junk App</p>
-        <p>GDSC Challenge</p>
+        <p class="project_title">Junk App</p>
+        <p class="project_title">GDSC Challenge</p>
         <a class="github" href="https://github.com/Etown-Computer-Science-Club/2024-solution-challenge-trashtalk" target="_blank"><i
             class="devicon-github-original"></i></a>
 
@@ -55,7 +56,6 @@
           <i class="devicon-opencv-plain-wordmark colored"></i>
         </div>
       </div>
-
 
           <!-- <img src="/global-media/HTML5_Badge.svg.png" alt="HTML">
           <img src="/global-media/css3.png" alt="CSS">
