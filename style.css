@@ -35,6 +35,10 @@
 	font-family: "Noto Sans", "Roboto", sans-serif;
 }
 
+#footer{
+	padding-top: 10px;
+}
+
 /* Profile Picture */
 #profile {
 	object-fit: cover;
@@ -258,4 +262,10 @@ div > .section_title {
 /* Reduce Font Size of Long Name Courses */
 .class-box .long_name {
 	font-size: 22px;
+}
+
+.github_soon{
+	font-size: 20px;
+	color: #EE0000;
+	padding-top: 15px;
 }

@@ -23,6 +23,10 @@
 				case "junk_app": {
 					return window.open("https://github.com/Etown-Computer-Science-Club/2024-solution-challenge-trashtalk");
 				}
+
+				case "cram_review": {
+					return window.open("https://github.com/SamH477/Personal-Study-Website");
+				}
 			}
 
 			window.location = href;
