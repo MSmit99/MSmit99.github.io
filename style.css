@@ -1,75 +1,89 @@
+/* Base HTML and Body Setup */
+html, body {
+    scroll-behavior: smooth;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #222222;
+    color: #FFFFFF;
+}
+
+.main-container {
+    width: 100%;
+    position: relative;
+    overflow-x: hidden;
+}
+
 /* Creates Navbar */
 #navbar {
-	display: flex;
+    display: flex;
     background-color: #000000;
-	box-shadow: -1px 3px 13px -3px #696969;
+    box-shadow: -1px 3px 13px -3px #696969;
     overflow: hidden;
-	justify-content: center;
-	margin-bottom: 1rem;
-	padding: 0;
+    justify-content: center;
+    margin-bottom: 1rem;
+    padding: 0;
 }
 
 /* Navbar Link */
 #navbar a {
-	float: left;
-	color: #FFFFFF;
-	text-align: center;
-	padding: 20px 60px;
-	text-decoration: none;
-	font-family: "Noto Sans", "Roboto", sans-serif;
-	font-size: 18px;
+    float: left;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 20px 60px;
+    text-decoration: none;
+    font-family: "Noto Sans", "Roboto", sans-serif;
+    font-size: 18px;
 }
 
 /* Hovering over Navbar Items */
 #navbar a:hover {
-	background-color: #FFFFFF;
-	color: #000000;
+    background-color: #FFFFFF;
+    color: #000000;
 }
-
 
 /* Header & Footer */
 .head_foot {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	font-family: "Noto Sans", "Roboto", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Noto Sans", "Roboto", sans-serif;
 }
 
-#footer{
-	padding-top: 10px;
+#footer {
+    padding-top: 10px;
 }
 
 /* Profile Picture */
 #profile {
-	object-fit: cover;
-	border-radius: 50%;
+    object-fit: cover;
+    border-radius: 50%;
     border-color: #800080;
     border-width: 3px;
     border-style: solid;
-	width: 150px;
-	height: 150px;
-	margin: 10px 0;
+    width: 150px;
+    height: 150px;
+    margin: 10px 0;
 }
 
 /* Top Icons */
 .github, #linkedin {
-	color: #FFFFFF;
-	font-size: 2em;
-	text-decoration: none;
+    color: #FFFFFF;
+    font-size: 2em;
+    text-decoration: none;
 }
 
 /* Hovering over LinkedIn Item */
 #linkedin:hover {
-	color: var(--bs-link-hover-color);
+    color: var(--bs-link-hover-color);
 }
-
 
 /* Scrolling Buttons */
-/* Enables smooth scrolling */
-html {
-    scroll-behavior: smooth;
-}
-
 .button-container {
     text-align: center;
 }
@@ -77,7 +91,7 @@ html {
 /* Scrolling Button */
 .scroll-button {
     width: fit-content;
-	display: inline-block;
+    display: inline-block;
     text-align: center;
     padding: 10px 20px;
     color: white;
@@ -85,187 +99,202 @@ html {
     border-radius: 5px;
     font-size: 16px;
     margin: 5px;
-	border: solid white 1px;
+    border: solid white 1px;
 }
 
 /* Hovering over Scrolling Button */
 .scroll-button:hover {
     background-color: #FFFFFF;
-	color: #000000;
+    color: #000000;
 }
 
 .scroll-button.projects {
-	background-color: #800080;
+    background-color: #800080;
 }
 
 .scroll-button.current {
-	background-color: #FFA500;
+    background-color: #FFA500;
 }
 
 .scroll-button.cs {
-	background-color: #00EEFF;
+    background-color: #00EEFF;
 }
 
 .scroll-button.math {
-	background-color: #EE0000;
+    background-color: #EE0000;
 }
-
-
-/* Body */
-body {
-	font-family: "Roboto", sans-serif;
-	margin: 0;
-	background-color: #222222;
-	color: #FFFFFF;
-}
-
 
 /* Section Title */
-div > .section_title {
-	text-align: center;
-	font-family: "Noto Sans", "Roboto", sans-serif;
-	padding-top: 30px;
+.section_title{
+    text-align: center;
+    font-family: "Noto Sans", "Roboto", sans-serif;
+    padding-top: 30px;
 }
 
-/* Flex Container that wraps*/
+/* Section styling */
+section {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+/* Iframe Container */
+.iframe-container {
+    position: relative;
+    width: 100%;
+    height: 800px;
+    overflow: hidden;
+}
+
+.iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    overflow: hidden;
+}
+
+/* Flex Container */
 .flex-wrap {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	column-gap: 60px;
-	row-gap: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 /* Icons */
 .icons {
     display: flex;
-	justify-content: center;
-	align-items: center;
+    justify-content: center;
+    align-items: center;
     margin-top: auto;
-	margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 /* Devicon Images */
 .icons i {
-	font-size: 50px;
+    font-size: 50px;
 }
 
 /* Imported Images */
 .icons img {
-	display: flex;
-	width: 50px;
+    display: flex;
+    width: 50px;
     height: auto;
-	padding: 2px;
+    padding: 2px;
 }
-
 
 /* Project Box */
 .project-box {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-
-	border: solid;
-	border-width: 2px;
-	border-radius: 10%;
-	border-color: #800080;
-
-	padding: 15px;
-	min-width: 250px;
-	width: auto;
-	min-height: 150px;
-	height: auto;
-
-	font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid;
+    border-width: 2px;
+    border-radius: 10%;
+    border-color: #800080;
+    padding: 15px;
+    flex: 0 1 300px;
+    min-height: 150px;
+    font-size: 30px;
     font-family: "Roboto", sans-serif;
+    margin: 0;
 }
 
 /* Hovering over Project Box Item */
 .project-box:hover {
-	background-color: #2B2B2B;
-	cursor: pointer;
+    background-color: #2B2B2B;
+    cursor: pointer;
 }
 
 /* Project Titles */
 .project-box > .project_title {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 /* 2nd Title = Smaller */
 .project_title + .project_title {
-	font-size: 0.8em;
+    font-size: 0.8em;
 }
 
 /* Project Images & Italic Text */
 .project-box img, .project-box i {
-	width: 40px;
-	height: 40px;
-	font-size: 40px;
-	margin: 0 2px 0 2px;
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    margin: 0 2px 0 2px;
 }
-
 
 /* Class Box */
 .class-box {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-
-	border: solid;
-	border-width: 2px;
-	border-radius: 10%;
-
-	padding: 15px;
-	min-width: 250px;
-	width: 300px;
-	min-height: 180px;
-	height: auto;
-
-	font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid;
+    border-width: 2px;
+    border-radius: 10%;
+    padding: 15px;
+    min-width: 250px;
+    width: 300px;
+    min-height: 180px;
+    height: auto;
+    font-size: 25px;
     font-family: "Roboto", sans-serif;
 }
 
 /* Picks Border Colors based on Course Type */
 .class-box.current {
-	border-color: #FFA500;
+    border-color: #FFA500;
 }
 
-.class-box.cs{
-	border-color: #00EEFF;
+.class-box.cs {
+    border-color: #00EEFF;
 }
 
 .class-box.math {
-	border-color: #EE0000;
+    border-color: #EE0000;
 }
 
 /* Course Titles */
 .class-box .course_title {
-	text-decoration: underline;
-	color: #FFFFFF;
-	text-align: center;
+    text-decoration: underline;
+    color: #FFFFFF;
+    text-align: center;
 }
 
 /* Hovering over Course Title */
 .class-box .course_title:hover {
-	background-color: #2b2b2b;
-	color: #00EEEE;
-	cursor: pointer;
+    background-color: #2b2b2b;
+    color: #00EEEE;
+    cursor: pointer;
 }
 
 /* Description of Courses */
 .class-box .description {
-	font-size: 15px;
-	margin-bottom: 3px;
-	text-decoration: none;
+    font-size: 15px;
+    margin-bottom: 3px;
+    text-decoration: none;
 }
 
 /* Reduce Font Size of Long Name Courses */
 .class-box .long_name {
-	font-size: 22px;
+    font-size: 22px;
 }
 
-.github_soon{
-	font-size: 20px;
-	color: #EE0000;
-	padding-top: 15px;
+.github_soon {
+    font-size: 20px;
+    color: #EE0000;
+    padding-top: 15px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .project-box {
+        flex: 0 1 100%;
+    }
 }
