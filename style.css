@@ -222,6 +222,10 @@ section {
     font-size: 0.8em;
 }
 
+#pass_pigs .project_title{
+    font-size: 0.8em;
+}
+
 /* Project Images & Italic Text */
 .project-box img, .project-box i {
     width: 40px;

@@ -27,6 +27,14 @@
 				case "cram_review": {
 					return window.open("https://github.com/SamH477/Personal-Study-Website");
 				}
+
+				case "club_hub": {
+					return window.open("https://etown-clubhub.ue.r.appspot.com/");
+				}
+
+				case "jay_wing": {
+					return window.open("https://jaywing.etowndb.com/");
+				}
 			}
 
 			window.location = href;
