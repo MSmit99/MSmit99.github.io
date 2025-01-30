@@ -29,7 +29,7 @@
 				}
 
 				case "club_hub": {
-					return window.open("https://etown-clubhub.ue.r.appspot.com/");
+					return window.open("https://github.com/Etown-CS310/club_hub");
 				}
 
 				case "jay_wing": {
