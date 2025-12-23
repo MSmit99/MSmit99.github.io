@@ -44,51 +44,9 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
+            overflow: visible;
             border-width: 3px;
-        }
-
-        /* Animated gradient border on hover */
-        .project-box::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff, #00ffff);
-            background-size: 400% 400%;
-            border-radius: 10%;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            animation: gradientRotate 3s ease infinite;
-        }
-
-        @keyframes gradientRotate {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .project-box:hover::before {
-            opacity: 1;
-        }
-
-        /* Shimmer effect */
-        .project-box::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .project-box:hover::after {
-            left: 100%;
+            padding: 20px;
         }
 
         .project-box:hover {
@@ -100,22 +58,31 @@
             background: linear-gradient(145deg, #3a2a4a, #2a1a3a);
         }
 
-        /* Icon animations */
+        /* Icon Grid Layout - NEW */
         .icons {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
             transition: transform 0.3s ease;
+            max-width: 100%;
+            padding: 15px 10px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         .project-box:hover .icons {
-            transform: scale(1.2) translateY(-5px);
+            transform: scale(1.05) translateY(-3px);
         }
 
         .icons i, .icons img {
             transition: transform 0.4s ease, filter 0.3s ease;
+            justify-self: center;
         }
 
         .project-box:hover .icons i,
         .project-box:hover .icons img {
-            transform: translateY(-8px) rotate(5deg);
+            transform: translateY(-5px) rotate(3deg);
             filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.8))
                     drop-shadow(0 0 25px rgba(160, 32, 240, 0.6));
         }
@@ -123,6 +90,8 @@
         /* Title animations */
         .project_title {
             transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
         }
 
         .project-box:hover .project_title:first-of-type {
@@ -141,6 +110,8 @@
         .github {
             transition: all 0.3s ease;
             display: inline-block;
+            position: relative;
+            z-index: 2;
         }
 
         .project-box:hover .github {
@@ -196,6 +167,8 @@
 
         .github_soon {
             transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
         }
 
         .project-box:hover .github_soon {
@@ -212,6 +185,8 @@
         .icons *:nth-child(2) { animation: float 3s ease-in-out 0.5s infinite; }
         .icons *:nth-child(3) { animation: float 3s ease-in-out 1s infinite; }
         .icons *:nth-child(4) { animation: float 3s ease-in-out 1.5s infinite; }
+        .icons *:nth-child(5) { animation: float 3s ease-in-out 2s infinite; }
+        .icons *:nth-child(6) { animation: float 3s ease-in-out 2.5s infinite; }
     </style> 
 
     <!-- JavaScript -->
@@ -237,46 +212,65 @@
                     </a>
             
                     <div class="icons">
-                        <i class="devicon-angular-plain colored"></i>
-                        <i class="devicon-nodejs-plain colored"></i>
-                        <i class="devicon-express-original"></i>
+                        <img src="/global-media/angular.svg" alt="Angular" class="si-icon">
+                        <i class="devicon-typescript-plain colored"></i>
+                        <i class="devicon-nodejs-plain colored si-icon"></i>
+                        <i class="devicon-express-original colored"></i>
+                        <img src="/global-media/openai.svg" alt="OpenAI" class="si-icon">
+                        <img src="/global-media/langchain.svg" alt="LangChain" class="si-icon">
+                        <i class="devicon-mongodb-plain colored"></i>
+                        <img src="/global-media/auth0.svg" alt="Auth0" class="si-icon">
+                        <img src="/global-media/microsoftGraph.svg" alt="Microsoft Graph API" class="si-icon">
+                        <img src="/global-media/tailwindcss.svg" alt="Tailwind CSS" class="si-icon">
+                        <img src="/global-media/lucide.svg" alt="Lucide Angular" class="si-icon">
                     </div>
                 </div>
-
+                
                 <!-- Story Forge -->
                 <div class="project-box" id="story_forge">
                     <p class="project_title">Story Forge</p>
-                    <p class="project_title">CS310</p>
+                    <p class="project_title">CS312</p>
                     <a class="github" href="https://github.com/Etown-CS310/Story-Forge" target="_blank" rel="noopener">
                         <i class="devicon-github-original"></i>
                     </a>
             
                     <div class="icons">
-                        <i class="devicon-react-original colored"></i>
+                        <i class="devicon-react-original colored si-icon"></i>
                         <i class="devicon-typescript-plain colored"></i>
+                        <img src="/global-media/vite.svg" alt="Vite" class="si-icon">
+                        <img src="/global-media/tailwindcss.svg" alt="Tailwind CSS" class="si-icon">
+                        <img src="/global-media/shadcnui.svg" alt="Shadcn UI" class="si-icon">
+                        <img src="/global-media/lucide.svg" alt="Lucide React" class="si-icon">
+                        <img src="/global-media/mermaid.svg" alt="Mermaid" class="si-icon">
+                        <img src="/global-media/convex.svg" alt="Convex" class="si-icon">
+                        <i class="devicon-nodejs-plain colored si-icon"></i>
                         <img src="/global-media/openai.svg" alt="OpenAI" class="si-icon">
                     </div>
                 </div>
 
-                <!-- GAIA Benchmark AI Agent -->
+                <!-- AI Agent -->
                 <div class="project-box" id="gaia_agent">
-                    <p class="project_title">GAIA Benchmark AI Agent</p>
+                    <p class="project_title">AI Agent</p>
                     <p class="project_title">CS170</p>
                     <a class="github" href="https://huggingface.co/spaces/MattSmit99/gaia-agent-MattSmit99" target="_blank" rel="noopener">
                         <i class="devicon-github-original"></i>
                     </a>
             
                     <div class="icons">
-                        <i class="devicon-python-plain colored"></i>
+                        <i class="devicon-python-plain colored si-icon"></i>
                         <img src="/global-media/huggingface.svg" alt="Hugging Face" class="si-icon">
-                        <img src="/global-media/openai.svg" alt="OpenAI" class="si-icon">
+                        <img src="/global-media/gradio.svg" alt="Gradio" class="si-icon">
+                        <img src="/global-media/anthropic.svg" alt="Anthropic" class="si-icon">
+                        <img src="/global-media/brave.svg" alt="Brave" class="si-icon">
+                        <img src="/global-media/serp.svg" alt="SerpAPI" class="si-icon">
+                        <img src="/global-media/duckduckgo.svg" alt="duckduckgo" class="si-icon">
                     </div>
                 </div>
 
                 <!-- Buffer Overflow Security Research -->
                 <div class="project-box" id="buffer_overflow">
                     <p class="project_title">Buffer Overflow Security Research</p>
-                    <p class="project_title">CS390</p>
+                    <p class="project_title">CS363</p>
                     <p class="github_soon"><u>Private Repository</u></p>
             
                     <div class="icons">
@@ -305,7 +299,7 @@
                 <!-- Real-Time Flight Delay Forecasting -->
                 <div class="project-box" id="flight_delay">
                     <p class="project_title">Real-Time Flight Delay Forecasting</p>
-                    <p class="project_title">Big Data</p>
+                    <p class="project_title">CS354</p>
                     <a class="github" href="https://github.com/NolanP2003/FlightDelay" target="_blank" rel="noopener">
                         <i class="devicon-github-original"></i>
                     </a>
@@ -351,7 +345,7 @@
                 <!-- Sleep Study -->
                 <div class="project-box" id="sleep_study">
                     <p class="project_title">Sleep Study</p>
-                    <p class="project_title">AI & Data Science</p>
+                    <p class="project_title">CS250</p>
                     <p class="github_soon"><u>GitHub: Coming Soon!</u></p>
             
                     <div class="icons">
