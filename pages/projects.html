@@ -6,27 +6,183 @@
     <title>Matt Smith - Projects</title>
 
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+          crossorigin="anonymous">
     
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+            crossorigin="anonymous"></script>
 
-    <!-- Roboto Font -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
 
-    <!-- Noto Sans Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" 
-        rel="stylesheet">
-
+    <!-- Devicons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    
     <!-- Style Sheet -->
     <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicons@2.0.1/css/devicons.min.css"> 
+    
+    <style>
+        /* ================= SIMPLE ICONS ================= */
+        .si-icon {
+            width: 40px;
+            height: 40px;
+            filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.6));
+            transition: transform 0.4s ease, filter 0.3s ease;
+        }
+
+        /* Enhanced Project Box Animations */
+        .project-box {
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            overflow: visible;
+            border-width: 3px;
+            padding: 20px;
+        }
+
+        .project-box:hover {
+            transform: translateY(-15px) scale(1.05) rotateY(5deg);
+            box-shadow: 0 20px 50px rgba(160, 32, 240, 0.6),
+                        0 10px 30px rgba(0, 255, 255, 0.3),
+                        inset 0 0 20px rgba(160, 32, 240, 0.2);
+            border-color: #00ffff;
+            background: linear-gradient(145deg, #3a2a4a, #2a1a3a);
+        }
+
+        /* Icon Grid Layout - NEW */
+        .icons {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            transition: transform 0.3s ease;
+            max-width: 100%;
+            padding: 15px 10px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-box:hover .icons {
+            transform: scale(1.05) translateY(-3px);
+        }
+
+        .icons i, .icons img {
+            transition: transform 0.4s ease, filter 0.3s ease;
+            justify-self: center;
+        }
+
+        .project-box:hover .icons i,
+        .project-box:hover .icons img {
+            transform: translateY(-5px) rotate(3deg);
+            filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.8))
+                    drop-shadow(0 0 25px rgba(160, 32, 240, 0.6));
+        }
+
+        /* Title animations */
+        .project_title {
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-box:hover .project_title:first-of-type {
+            color: #00ffff;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8),
+                         0 0 40px rgba(160, 32, 240, 0.6);
+            transform: scale(1.1);
+        }
+
+        .project-box:hover .project_title:nth-of-type(2) {
+            color: #ff00ff;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+        }
+
+        /* GitHub icon pulse */
+        .github {
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-box:hover .github {
+            transform: scale(1.3) rotate(360deg);
+            color: #00ffff;
+            filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.8));
+        }
+
+        /* Entrance animation */
+        .project-box {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-box:nth-child(1) { animation-delay: 0.1s; }
+        .project-box:nth-child(2) { animation-delay: 0.2s; }
+        .project-box:nth-child(3) { animation-delay: 0.3s; }
+        .project-box:nth-child(4) { animation-delay: 0.4s; }
+        .project-box:nth-child(5) { animation-delay: 0.5s; }
+        .project-box:nth-child(6) { animation-delay: 0.6s; }
+        .project-box:nth-child(7) { animation-delay: 0.7s; }
+        .project-box:nth-child(8) { animation-delay: 0.8s; }
+        .project-box:nth-child(9) { animation-delay: 0.9s; }
+        .project-box:nth-child(10) { animation-delay: 1s; }
+        .project-box:nth-child(11) { animation-delay: 1.1s; }
+        .project-box:nth-child(12) { animation-delay: 1.2s; }
+
+        .section_title {
+            background: linear-gradient(90deg, #800080, #a020f0, #800080);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease infinite;
+            background-size: 200% auto;
+            font-size: 3em;
+            font-weight: bold;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+        }
+
+        .project-box:hover .github_soon {
+            color: #ff6b6b;
+            transform: scale(1.05);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .icons *:nth-child(1) { animation: float 3s ease-in-out infinite; }
+        .icons *:nth-child(2) { animation: float 3s ease-in-out 0.5s infinite; }
+        .icons *:nth-child(3) { animation: float 3s ease-in-out 1s infinite; }
+        .icons *:nth-child(4) { animation: float 3s ease-in-out 1.5s infinite; }
+        .icons *:nth-child(5) { animation: float 3s ease-in-out 2s infinite; }
+        .icons *:nth-child(6) { animation: float 3s ease-in-out 2.5s infinite; }
+    </style> 
 
     <!-- JavaScript -->
     <script src="/js/global.js"></script>
@@ -42,36 +198,174 @@
             <h1 class="section_title">Projects</h1>
         
             <div class="flex-wrap">
-                <div class="project-box" id="club_hub">
-                    <p class="project_title">ClubHub</p>
-                    <p class="project_title">CS310</p>
-                    <a class="github" href="https://github.com/Etown-CS310/club_hub" target="_blank" rel="noopener">
+                <!-- AICA -->
+                <div class="project-box" id="ai_comm">
+                    <p class="project_title">AICA</p>
+                    <p class="project_title">CS170</p>
+                    <a class="github" href="https://github.com/Etown-CS170/2025-AICA" target="_blank" rel="noopener">
                         <i class="devicon-github-original"></i>
                     </a>
             
                     <div class="icons">
-                        <img src="/global-media/HTML5_Badge.svg.png" alt="HTML">
-                        <img src="/global-media/css3.png" alt="CSS">
-                        <i class="devicon-javascript-plain colored"></i>
-                        <img src="/global-media/firebase.png" alt="Firebase">
+                        <!-- Frontend Layer -->
+                        <img src="/global-media/angular.svg" alt="Angular" class="si-icon">
+                        <i class="devicon-typescript-plain colored"></i>
+                        <img src="/global-media/rxjs.svg" alt="RxJS" class="si-icon">
+                        <img src="/global-media/tailwindcss.svg" alt="Tailwind CSS" class="si-icon">
+                        <img src="/global-media/lucide.svg" alt="Lucide Angular" class="si-icon">
+                        
+                        <!-- Backend Layer -->
+                        <i class="devicon-nodejs-plain colored si-icon"></i>
+                        <i class="devicon-express-original colored"></i>
+                        
+                        <!-- AI Layer (Key differentiator) -->
+                        <img src="/global-media/openai.svg" alt="OpenAI" class="si-icon">
+                        <img src="/global-media/langchain.svg" alt="LangChain" class="si-icon">
+                        
+                        <!-- Database -->
+                        <i class="devicon-mongodb-plain colored"></i>
+                        
+                        <!-- Auth & Integration -->
+                        <img src="/global-media/auth0.svg" alt="Auth0" class="si-icon">
+                        <img src="/global-media/microsoftGraph.svg" alt="Microsoft Graph API" class="si-icon">
+                    </div>
+                </div>
+                
+                <!-- Story Forge -->
+                <div class="project-box" id="story_forge">
+                    <p class="project_title">Story Forge</p>
+                    <p class="project_title">CS312</p>
+                    <a class="github" href="https://github.com/Etown-CS310/Story-Forge" target="_blank" rel="noopener">
+                        <i class="devicon-github-original"></i>
+                    </a>
+            
+                    <div class="icons">
+                        <!-- Frontend Layer -->
+                        <i class="devicon-react-original colored si-icon"></i>
+                        <i class="devicon-typescript-plain colored"></i>
+                        <img src="/global-media/vite.svg" alt="Vite" class="si-icon">
+                        <img src="/global-media/tailwindcss.svg" alt="Tailwind CSS" class="si-icon">
+                        <img src="/global-media/shadcnui.svg" alt="Shadcn" class="si-icon">
+                        <img src="/global-media/lucide.svg" alt="Lucide React" class="si-icon">
+                        
+                        <!-- Backend/Platform (KEY DIFFERENTIATOR) -->
+                        <img src="/global-media/convex.svg" alt="Convex" class="si-icon">
+                        <i class="devicon-nodejs-plain colored si-icon"></i>
+                        
+                        <!-- AI Layer -->
+                        <img src="/global-media/openai.svg" alt="OpenAI" class="si-icon">
+                        
+                        <!-- Visualization (UNIQUE FEATURE) -->
+                        <img src="/global-media/mermaid.svg" alt="Mermaid" class="si-icon">
+                        
+                        <!-- Auth -->
+                        <img src="/global-media/workos.svg" alt="WorkOS" class="si-icon">
                     </div>
                 </div>
 
+                <!-- AI Agent -->
+                <div class="project-box" id="gaia_agent">
+                    <p class="project_title">AI Agent</p>
+                    <p class="project_title">CS170</p>
+                    <a class="github" href="https://huggingface.co/spaces/MattSmit99/gaia-agent-MattSmit99/blob/main/README.md" target="_blank" rel="noopener">
+                        <img src="/global-media/huggingface.svg" alt="Hugging Face" class="si-icon">
+                    </a>
+            
+                    <div class="icons">
+                        <!-- Core Stack -->
+                        <i class="devicon-python-plain colored si-icon"></i>
+                        <img src="/global-media/gradio.svg" alt="Gradio" class="si-icon">
+                        <img src="/global-media/anthropic.svg" alt="Anthropic Claude" class="si-icon">
+                        
+                        <!-- AI Models -->
+                        <img src="/global-media/openai.svg" alt="OpenAI Whisper" class="si-icon">
+                        
+                        <!-- Search & Data -->
+                        <img src="/global-media/brave.svg" alt="Brave Search" class="si-icon">
+                        <img src="/global-media/wikipedia.svg" alt="Wikipedia" class="si-icon">
+                        <img src="/global-media/youtube.svg" alt="YouTube API" class="si-icon">
+                        
+                        <!-- Data Processing -->
+                        <img src="/global-media/beautifulsoup.svg" alt="BeautifulSoup" class="si-icon">
+                        <img src="/global-media/pandas.svg" alt="Pandas" class="si-icon">
+                    </div>
+                </div>
+
+                <!-- Pass the Pigs (React) -->
+                <div class="project-box" id="pass_pigs_react">
+                    <p class="project_title">Pass The Pigs Scorer</p>
+                    <p class="project_title">Personal Project</p>
+                    <a class="github" href="https://github.com/MSmit99/PassThePigsScorer" target="_blank" rel="noopener">
+                        <i class="devicon-github-original"></i>
+                    </a>
+            
+                    <div class="icons">
+                        <i class="devicon-react-original colored si-icon"></i>
+                        <i class="devicon-javascript-plain colored"></i>
+                        <i class="devicon-nodejs-plain colored si-icon"></i>
+                        <img src="/global-media/tailwindcss.svg" alt="Tailwind CSS" class="si-icon">
+                        <img src="/global-media/lucide.svg" alt="Lucide React" class="si-icon">
+                    </div>
+                </div>
+
+                <!-- JayWing Academy -->
                 <div class="project-box" id="jay_wing">
                     <p class="project_title">JayWing Academy</p>
                     <p class="project_title">CS341</p>
                     <a class="github" href="https://github.com/MSmit99/JayWing-Academy" target="_blank" rel="noopener">
                         <i class="devicon-github-original"></i>
                     </a>
-            
+
                     <div class="icons">
-                        <i class="devicon-php-plain colored"></i>
+                        <!-- Backend -->
+                        <i class="devicon-php-plain colored si-icon"></i>
+                        <img src="/global-media/mysql.svg" alt="MySQL" class="si-icon">
+                        <img src="/global-media/apache.svg" alt="Apache" class="si-icon">
+                        <img src="/global-media/xampp.svg" alt="XAMPP" class="si-icon">
+                        
+                        <!-- Frontend Languages -->
+                        <i class="devicon-html5-plain colored si-icon"></i>
+                        <i class="devicon-css3-plain colored si-icon"></i>
                         <i class="devicon-javascript-plain colored"></i>
-                        <img src="/global-media/HTML5_Badge.svg.png" alt="HTML">
-                        <img src="/global-media/css3.png" alt="CSS">
+                        
+                        <!-- UI Frameworks & Libraries -->
+                        <img src="/global-media/bootstrap.svg" alt="Bootstrap" class="si-icon">
+                        <img src="/global-media/fullcalendar.svg" alt="FullCalendar" class="si-icon">
+                        
+                        <!-- Optional: if you want to show more -->
+                        <img src="/global-media/tailwindcss.svg" alt="Tailwind CSS" class="si-icon">
                     </div>
                 </div>
-                
+
+                <!-- Club Hub -->
+                <div class="project-box" id="club_hub">
+                    <p class="project_title">ClubHub</p>
+                    <p class="project_title">CS310</p>
+                    <a class="github" href="https://github.com/Etown-CS310/club_hub" target="_blank" rel="noopener">
+                        <i class="devicon-github-original"></i>
+                    </a>
+
+                    <div class="icons">
+                        <!-- Core Frontend -->
+                        <i class="devicon-html5-plain colored"></i>
+                        <i class="devicon-css3-plain colored"></i>
+                        <i class="devicon-javascript-plain colored"></i>
+                        
+                        <!-- Frontend Frameworks/Libraries -->
+                        <img src="/global-media/bootstrap.svg" alt="Bootstrap" class="si-icon">
+                        <img src="/global-media/fullcalendar.svg" alt="FullCalendar" class="si-icon">
+                        
+                        <!-- Backend -->
+                        <i class="devicon-nodejs-plain colored si-icon"></i>
+                        <i class="devicon-express-original colored"></i>
+                        
+                        <!-- Database & Cloud Services -->
+                        <i class="devicon-firebase-plain colored si-icon"></i>
+                        <i class="devicon-googlecloud-plain colored si-icon"></i>
+                    </div>
+                </div>
+
+                <!-- Cram Review -->
                 <div class="project-box" id="cram_review">
                     <p class="project_title">Cram Review</p>
                     <p class="project_title">Coding Challenge</p>
@@ -80,66 +374,80 @@
                     </a>
             
                     <div class="icons">
-                        <img src="/global-media/HTML5_Badge.svg.png" alt="HTML">
-                        <img src="/global-media/css3.png" alt="CSS">
-                        <i class="devicon-python-plain colored"></i>
-                        <img src="/global-media/flask.png" alt="Flask">
+                        <i class="devicon-python-plain colored si-icon"></i>
+                        <i class="devicon-flask-original colored si-icon"></i>
+                        <img src="/global-media/openai.svg" alt="OpenAI" class="si-icon">
+                        <i class="devicon-html5-plain colored si-icon"></i>
+                        <i class="devicon-css3-plain colored si-icon"></i>
+                        <i class="devicon-javascript-plain colored"></i>
                     </div>
                 </div>
 
+                <!-- Real-Time Flight Delay Forecasting-->
+                <div class="project-box" id="flight_delay">
+                    <p class="project_title">Flight Delay Forecasting</p>
+                    <p class="project_title">(Real-Time) CS354</p>
+                    <a class="github" href="https://github.com/NolanP2003/FlightDelay" target="_blank" rel="noopener">
+                        <i class="devicon-github-original"></i>
+                    </a>
+            
+                    <div class="icons">
+                        <i class="devicon-python-plain colored si-icon"></i>
+                        <i class="devicon-flask-original colored si-icon"></i>
+                        <img src="/global-media/apachespark.svg" alt="Apache Spark" class="si-icon">
+                        <img src="/global-media/apachekafka.svg" alt="Apache Kafka" class="si-icon">
+                        <img src="/global-media/apacheparquet.svg" alt="Apache Parquet" class="si-icon">
+                        <i class="devicon-googlecloud-plain colored si-icon"></i>
+                        <i class="devicon-javascript-plain colored"></i>
+                        <i class="devicon-html5-plain colored si-icon"></i>
+                        <i class="devicon-css3-plain colored si-icon"></i>
+                    </div>
+                </div>
+
+                <!-- Sleep Study -->
+                <div class="project-box" id="sleep_study">
+                    <p class="project_title">Sleep Study</p>
+                    <p class="project_title">CS250</p>
+                    <a class="github" href="https://github.com/MSmit99/SleepFactors" target="_blank" rel="noopener">
+                        <i class="devicon-github-original"></i>
+                    </a>
+            
+                    <div class="icons">
+                        <i class="devicon-python-plain colored si-icon"></i>
+                        <i class="devicon-javascript-plain colored"></i>
+                        <img src="/global-media/chartdotjs.svg" alt="Chart.js" class="si-icon">
+                        <i class="devicon-html5-plain colored si-icon"></i>
+                        <i class="devicon-css3-plain colored si-icon"></i>
+                        <img src="/global-media/pandas.svg" alt="Pandas" class="si-icon">
+                        <img src="/global-media/numpy.svg" alt="NumPy" class="si-icon">
+                        <img src="/global-media/matplotlib.svg" alt="Matplotlib" class="si-icon">
+                        <img src="/global-media/seaborn.svg" alt="Seaborn" class="si-icon">
+                        <img src="/global-media/scikitlearn.svg" alt="Scikit-Learn" class="si-icon">
+                        <img src="/global-media/scipy.svg" alt="SciPy" class="si-icon">
+                    </div>
+                </div>
+
+                <!-- Pass the Pigs (CLI) -->
                 <div class="project-box" id="pass_pigs">
                     <p class="project_title">Pass The Pigs Scorer</p>
-                    <p class="project_title">APCSP</p>
+                    <p class="project_title">(CLI) APCSP</p>
                     <a class="github" href="https://github.com/MSmit99/PassThePigsChatScorer" target="_blank" rel="noopener">
                         <i class="devicon-github-original"></i>
                     </a>
                     <div class="icons">
                         <i class="devicon-javascript-plain colored"></i>
-                        <img src="/global-media/nodejs-plain.svg" alt="Node.js">
+                        <i class="devicon-nodejs-plain colored si-icon"></i>
                     </div>
                 </div>
 
-                <!-- <div class="project-box" id="baseball_db">
-                    <p class="project_title">Baseball DB</p>
-                    <p class="project_title">Database Systems</p>
-                    <p class="github_soon"><u>GitHub: Coming Soon!</u></p>
-
-                    <div class="icons">
-                        <i class="devicon-php-plain colored"></i>
-                    </div>
-                </div> -->
-
-                <!-- <div class="project-box" id="mine_sweeper">
-                    <p class="project_title">Minesweeper</p>
-                    <p class="project_title">Computer Science II</p>
-                    <p class="github_soon"><u>GitHub: Coming Soon!</u></p>
-            
-                    <div class="icons">
-                        <i class="devicon-java-plain colored"></i>
-                    </div>
-                </div> -->
-
+                <!-- Giant Tic-Tac-Toe *UPDATE*-->
                 <!-- <div class="project-box" id="giant_tic">
                     <p class="project_title">Giant Tic-Tac-Toe</p>
                     <p class="project_title">APCSA</p>
-                    <p class="github_soon"><u>GitHub: Coming Soon!</u></p>
+                    <p class="github"><u>GitHub: Coming Soon!</u></p>
             
                     <div class="icons">
                         <i class="devicon-java-plain colored"></i>
-                    </div>
-                </div> -->
-                
-                <!-- <div class="project-box" id="junk_app">
-                    <p class="project_title">Junk App</p>
-                    <p class="project_title">GDSC Challenge</p>
-                    <a class="github" href="https://github.com/Etown-Computer-Science-Club/2024-solution-challenge-trashtalk" target="_blank" rel="noopener">
-                        <i class="devicon-github-original"></i>
-                    </a>
-            
-                    <div class="icons">
-                        <i class="devicon-cplusplus-plain colored"></i>
-                        <i class="devicon-qt-original colored"></i>
-                        <i class="devicon-opencv-plain-wordmark colored"></i>
                     </div>
                 </div> -->
             </div>
