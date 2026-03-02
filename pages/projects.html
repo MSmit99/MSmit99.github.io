@@ -197,6 +197,59 @@
         .project-box.coming-soon:hover .project-description {
             color: rgba(255,255,255,0.55);
         }
+
+
+        /* ── Category section headers ── */
+        .category-section { width: 100%; padding: 10px 20px 0; }
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 40px 0 8px;
+            padding: 0 20px;
+        }
+        .category-header h2 {
+            font-family: "Anonymous Pro", monospace;
+            font-size: 1em;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #a855f7;
+            margin: 0;
+            white-space: nowrap;
+        }
+        .category-header::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(168,85,247,0.5), transparent);
+        }
+
+        /* ── Featured badge & card ── */
+        .featured-badge {
+            font-family: "Anonymous Pro", monospace;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #f59e0b;
+            border: 1px solid rgba(245,158,11,0.5);
+            border-radius: 3px;
+            padding: 2px 7px;
+            margin-bottom: 2px;
+            display: inline-block;
+        }
+        .project-box.featured {
+            border-color: rgba(245,158,11,0.6);
+            box-shadow: 0 4px 20px rgba(245,158,11,0.15);
+            flex: 0 1 340px;
+        }
+        .project-box.featured:hover {
+            border-color: #f59e0b;
+            box-shadow: 0 20px 50px rgba(245,158,11,0.35),
+                        0 10px 30px rgba(160,32,240,0.3),
+                        inset 0 0 20px rgba(245,158,11,0.1);
+        }
     </style>
     <script src="/js/global.js"></script>
     <script src="/js/projects.js"></script>
@@ -207,15 +260,19 @@
     <main class="main-container">
         <div id="projects">
             <h1 class="section_title">Projects</h1>
+
+            <!-- ══ AI & MACHINE LEARNING ══ -->
+            <div class="category-header"><h2>🤖 AI &amp; Machine Learning</h2></div>
             <div class="flex-wrap">
 
                 <!-- AICA -->
-                <div class="project-box" id="ai_comm">
+                <div class="project-box featured" id="ai_comm">
+                    <span class="featured-badge">⭐ Featured</span>
                     <p class="project_title">AICA</p>
                     <p class="project_title">CS170</p>
                     <a class="github" href="https://github.com/Etown-CS170/2025-AICA" target="_blank" rel="noopener"><i class="devicon-github-original"></i></a>
-                                        <p class="project-description">AI-powered email generation platform with Microsoft Outlook integration — compose context-aware business emails with customizable tone, audience, and templates via OpenAI.</p>
-<div class="icons">
+                    <p class="project-description">AI-powered email generation platform with Microsoft Outlook integration — compose context-aware business emails with customizable tone, audience, and templates via OpenAI.</p>
+                    <div class="icons">
                         <span class="icon-wrap" data-tooltip="Angular"><img src="/global-media/angular.svg" alt="Angular" class="si-icon"></span>
                         <i class="devicon-typescript-plain colored" data-tooltip="TypeScript"></i>
                         <span class="icon-wrap" data-tooltip="RxJS"><img src="/global-media/rxjs.svg" alt="RxJS" class="si-icon"></span>
@@ -232,12 +289,13 @@
                 </div>
 
                 <!-- Story Forge -->
-                <div class="project-box" id="story_forge">
+                <div class="project-box featured" id="story_forge">
+                    <span class="featured-badge">⭐ Featured</span>
                     <p class="project_title">Story Forge</p>
                     <p class="project_title">CS312</p>
                     <a class="github" href="https://github.com/Etown-CS310/Story-Forge" target="_blank" rel="noopener"><i class="devicon-github-original"></i></a>
-                                        <p class="project-description">Collaborative interactive storytelling platform where AI assists with plot branching, character dialogue, and narrative consistency, visualized as a live story graph.</p>
-<div class="icons">
+                    <p class="project-description">Collaborative interactive storytelling platform where AI assists with plot branching, character dialogue, and narrative consistency, visualized as a live story graph.</p>
+                    <div class="icons">
                         <i class="devicon-react-original colored si-icon" data-tooltip="React"></i>
                         <i class="devicon-typescript-plain colored" data-tooltip="TypeScript"></i>
                         <span class="icon-wrap" data-tooltip="Vite"><img src="/global-media/vite.svg" alt="Vite" class="si-icon"></span>
@@ -253,14 +311,15 @@
                 </div>
 
                 <!-- AI Agent -->
-                <div class="project-box" id="gaia_agent">
+                <div class="project-box featured" id="gaia_agent">
+                    <span class="featured-badge">⭐ Featured</span>
                     <p class="project_title">AI Agent</p>
                     <p class="project_title">CS170</p>
                     <a class="github" href="https://huggingface.co/spaces/MattSmit99/gaia-agent-MattSmit99/blob/main/README.md" target="_blank" rel="noopener">
                         <img src="/global-media/huggingface.svg" alt="Hugging Face" style="width:40px;height:40px;">
                     </a>
-                                        <p class="project-description">Autonomous AI agent built to solve HuggingFace&#x27;s GAIA benchmark — performs multi-step reasoning, web research, and file analysis across PDFs, images, Excel, and CSV.</p>
-<div class="icons">
+                    <p class="project-description">Autonomous AI agent built to solve HuggingFace&#x27;s GAIA benchmark — performs multi-step reasoning, web research, and file analysis across PDFs, images, Excel, and CSV.</p>
+                    <div class="icons">
                         <i class="devicon-python-plain colored si-icon" data-tooltip="Python"></i>
                         <span class="icon-wrap" data-tooltip="Gradio"><img src="/global-media/gradio.svg" alt="Gradio" class="si-icon"></span>
                         <span class="icon-wrap" data-tooltip="Anthropic Claude"><img src="/global-media/anthropic.svg" alt="Claude" class="si-icon"></span>
@@ -273,31 +332,39 @@
                     </div>
                 </div>
 
-                <!-- Pass the Pigs (React) -->
-                <div class="project-box" id="pass_pigs_react">
-                    <p class="project_title">Pass The Pigs Scorer</p>
-                    <p class="project_title">Personal Project</p>
-                    <a class="github" href="https://github.com/MSmit99/PassThePigsScorer" target="_blank" rel="noopener"><i class="devicon-github-original"></i></a>
-                                        <p class="project-description">Responsive web app for scoring the dice game Pass the Pigs, supporting up to 8 players with real-time score tracking, game history, and configurable win conditions.</p>
-<div class="icons">
-                        <i class="devicon-react-original colored si-icon" data-tooltip="React"></i>
+                <!-- Cram Review -->
+                <div class="project-box" id="cram_review">
+                    <p class="project_title">Cram Review</p>
+                    <p class="project_title">Coding Challenge</p>
+                    <a class="github" href="https://github.com/SamH477/Personal-Study-Website" target="_blank" rel="noopener"><i class="devicon-github-original"></i></a>
+                    <p class="project-description">AI-powered study tool built during a coding challenge — generates practice questions and flashcards from uploaded course material to streamline exam prep.</p>
+                    <div class="icons">
+                        <i class="devicon-python-plain colored si-icon" data-tooltip="Python"></i>
+                        <i class="devicon-flask-original colored si-icon" data-tooltip="Flask"></i>
+                        <span class="icon-wrap" data-tooltip="OpenAI API"><img src="/global-media/openai.svg" alt="OpenAI" class="si-icon"></span>
+                        <i class="devicon-html5-plain colored si-icon" data-tooltip="HTML5"></i>
+                        <i class="devicon-css3-plain colored si-icon" data-tooltip="CSS3"></i>
                         <i class="devicon-javascript-plain colored" data-tooltip="JavaScript"></i>
-                        <i class="devicon-nodejs-plain colored si-icon" data-tooltip="Node.js"></i>
-                        <span class="icon-wrap" data-tooltip="Tailwind CSS"><img src="/global-media/tailwindcss.svg" alt="Tailwind CSS" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="Lucide React"><img src="/global-media/lucide.svg" alt="Lucide React" class="si-icon"></span>
                     </div>
                 </div>
 
+            </div>
+
+            <!-- ══ FULL-STACK WEB ══ -->
+            <div class="category-header"><h2>🌐 Full-Stack Web</h2></div>
+            <div class="flex-wrap">
+
                 <!-- JayWing Academy -->
-                <div class="project-box" id="jay_wing">
+                <div class="project-box featured" id="jay_wing">
+                    <span class="featured-badge">⭐ Featured</span>
                     <p class="project_title">JayWing Academy</p>
                     <p class="project_title">CS341</p>
                     <div class="project-links">
                         <a class="github" href="https://github.com/MSmit99/JayWing-Academy" target="_blank" rel="noopener"><i class="devicon-github-original"></i></a>
                         <a class="live-demo" href="https://jaywing.etowndb.com/" target="_blank" rel="noopener">▶ Live Demo</a>
                     </div>
-                                        <p class="project-description">Centralized tutoring platform with secure messaging, profile pages, and an interactive calendar. Winner of the Outstanding Software Engineering Project Award (2024&#x2013;25).</p>
-<div class="icons">
+                    <p class="project-description">Centralized tutoring platform with secure messaging, profile pages, and an interactive calendar. Winner of the Outstanding Software Engineering Project Award (2024–25).</p>
+                    <div class="icons">
                         <i class="devicon-php-plain colored si-icon" data-tooltip="PHP"></i>
                         <span class="icon-wrap" data-tooltip="MySQL"><img src="/global-media/mysql.svg" alt="MySQL" class="si-icon"></span>
                         <span class="icon-wrap" data-tooltip="Apache"><img src="/global-media/apache.svg" alt="Apache" class="si-icon"></span>
@@ -312,15 +379,16 @@
                 </div>
 
                 <!-- Club Hub -->
-                <div class="project-box" id="club_hub">
+                <div class="project-box featured" id="club_hub">
+                    <span class="featured-badge">⭐ Featured</span>
                     <p class="project_title">ClubHub</p>
                     <p class="project_title">CS310</p>
                     <div class="project-links">
                         <a class="github" href="https://github.com/Etown-CS310/club_hub" target="_blank" rel="noopener"><i class="devicon-github-original"></i></a>
                         <a class="live-demo" href="YOUR_CLUBHUB_URL_HERE" target="_blank" rel="noopener">▶ Live Demo</a>
                     </div>
-                                        <p class="project-description">Centralized hub for managing school clubs with customizable pages, secure logins, and an interactive calendar. Nominated for Capstone Project of the Year (2024&#x2013;25).</p>
-<div class="icons">
+                    <p class="project-description">Centralized hub for managing school clubs with customizable pages, secure logins, and an interactive calendar. Nominated for Capstone Project of the Year (2024–25).</p>
+                    <div class="icons">
                         <i class="devicon-html5-plain colored" data-tooltip="HTML5"></i>
                         <i class="devicon-css3-plain colored" data-tooltip="CSS3"></i>
                         <i class="devicon-javascript-plain colored" data-tooltip="JavaScript"></i>
@@ -333,29 +401,35 @@
                     </div>
                 </div>
 
-                <!-- Cram Review -->
-                <div class="project-box" id="cram_review">
-                    <p class="project_title">Cram Review</p>
-                    <p class="project_title">Coding Challenge</p>
-                    <a class="github" href="https://github.com/SamH477/Personal-Study-Website" target="_blank" rel="noopener"><i class="devicon-github-original"></i></a>
-                                        <p class="project-description">AI-powered study tool built during a coding challenge — generates practice questions and flashcards from uploaded course material to streamline exam prep.</p>
-<div class="icons">
-                        <i class="devicon-python-plain colored si-icon" data-tooltip="Python"></i>
-                        <i class="devicon-flask-original colored si-icon" data-tooltip="Flask"></i>
-                        <span class="icon-wrap" data-tooltip="OpenAI API"><img src="/global-media/openai.svg" alt="OpenAI" class="si-icon"></span>
-                        <i class="devicon-html5-plain colored si-icon" data-tooltip="HTML5"></i>
-                        <i class="devicon-css3-plain colored si-icon" data-tooltip="CSS3"></i>
+                <!-- Pass the Pigs (React) -->
+                <div class="project-box" id="pass_pigs_react">
+                    <p class="project_title">Pass The Pigs Scorer</p>
+                    <p class="project_title">Personal Project</p>
+                    <a class="github" href="https://github.com/MSmit99/PassThePigsScorer" target="_blank" rel="noopener"><i class="devicon-github-original"></i></a>
+                    <p class="project-description">Responsive web app for scoring Pass the Pigs, supporting up to 8 players with real-time score tracking, game history, and configurable win conditions.</p>
+                    <div class="icons">
+                        <i class="devicon-react-original colored si-icon" data-tooltip="React"></i>
                         <i class="devicon-javascript-plain colored" data-tooltip="JavaScript"></i>
+                        <i class="devicon-nodejs-plain colored si-icon" data-tooltip="Node.js"></i>
+                        <span class="icon-wrap" data-tooltip="Tailwind CSS"><img src="/global-media/tailwindcss.svg" alt="Tailwind CSS" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="Lucide React"><img src="/global-media/lucide.svg" alt="Lucide React" class="si-icon"></span>
                     </div>
                 </div>
 
+            </div>
+
+            <!-- ══ DATA SCIENCE ══ -->
+            <div class="category-header"><h2>📊 Data Science</h2></div>
+            <div class="flex-wrap">
+
                 <!-- Flight Delay Forecasting -->
-                <div class="project-box" id="flight_delay">
+                <div class="project-box featured" id="flight_delay">
+                    <span class="featured-badge">⭐ Featured</span>
                     <p class="project_title">Flight Delay Forecasting</p>
                     <p class="project_title">(Real-Time) CS354</p>
                     <a class="github" href="https://github.com/NolanP2003/FlightDelay" target="_blank" rel="noopener"><i class="devicon-github-original"></i></a>
-                                        <p class="project-description">Real-time flight delay prediction pipeline using Apache Kafka and Spark Streaming, processing 1.16M+ samples to achieve 93.69% accuracy across three ML models.</p>
-<div class="icons">
+                    <p class="project-description">Real-time flight delay prediction pipeline using Apache Kafka and Spark Streaming, processing 1.16M+ samples to achieve 93.69% accuracy across three ML models.</p>
+                    <div class="icons">
                         <i class="devicon-python-plain colored si-icon" data-tooltip="Python"></i>
                         <i class="devicon-flask-original colored si-icon" data-tooltip="Flask"></i>
                         <span class="icon-wrap" data-tooltip="Apache Spark"><img src="/global-media/apachespark.svg" alt="Apache Spark" class="si-icon"></span>
@@ -373,8 +447,8 @@
                     <p class="project_title">Sleep Study</p>
                     <p class="project_title">CS250</p>
                     <a class="github" href="https://github.com/MSmit99/SleepFactors" target="_blank" rel="noopener"><i class="devicon-github-original"></i></a>
-                                        <p class="project-description">Data science research project using Python ML models (Random Forest, SVM, PCA) to rank the most influential factors affecting sleep quality and surface personalized insights.</p>
-<div class="icons">
+                    <p class="project-description">Data science research project using Python ML models (Random Forest, SVM, PCA) to rank the most influential factors affecting sleep quality and surface personalized insights.</p>
+                    <div class="icons">
                         <i class="devicon-python-plain colored si-icon" data-tooltip="Python"></i>
                         <i class="devicon-javascript-plain colored" data-tooltip="JavaScript"></i>
                         <span class="icon-wrap" data-tooltip="Chart.js"><img src="/global-media/chartdotjs.svg" alt="Chart.js" class="si-icon"></span>
@@ -389,13 +463,19 @@
                     </div>
                 </div>
 
+            </div>
+
+            <!-- ══ CLI & SYSTEMS ══ -->
+            <div class="category-header"><h2>⚙️ CLI &amp; Systems</h2></div>
+            <div class="flex-wrap">
+
                 <!-- Pass the Pigs (CLI) -->
                 <div class="project-box" id="pass_pigs">
                     <p class="project_title">Pass The Pigs Scorer</p>
                     <p class="project_title">(CLI) APCSP</p>
                     <a class="github" href="https://github.com/MSmit99/PassThePigsChatScorer" target="_blank" rel="noopener"><i class="devicon-github-original"></i></a>
-                                        <p class="project-description">The original CLI version of the Pass the Pigs scorer, built as an AP CS Principles project — runs in the terminal via Node.js with chat-style score input.</p>
-<div class="icons">
+                    <p class="project-description">The original CLI version of the Pass the Pigs scorer — runs in the terminal via Node.js with chat-style score input.</p>
+                    <div class="icons">
                         <i class="devicon-javascript-plain colored" data-tooltip="JavaScript"></i>
                         <i class="devicon-nodejs-plain colored si-icon" data-tooltip="Node.js"></i>
                     </div>
@@ -406,7 +486,7 @@
                     <p class="project_title">Giant Tic-Tac-Toe</p>
                     <p class="project_title">(CLI) APCSA</p>
                     <p class="coming-soon-badge">⏳ Coming Soon</p>
-                    <p class="project-description">Ultimate Tic-Tac-Toe variant played on a 9×9 meta-board — each move determines which sub-board your opponent must play in next.</p>
+                    <p class="project-description">Ultimate Tic-Tac-Toe variant on a 9×9 meta-board — each move determines which sub-board your opponent must play in next.</p>
                     <div class="icons">
                         <i class="devicon-java-plain colored" data-tooltip="Java"></i>
                     </div>
@@ -417,7 +497,7 @@
                     <p class="project_title">Minesweeper</p>
                     <p class="project_title">(CLI) Java</p>
                     <p class="coming-soon-badge">⏳ Coming Soon</p>
-                    <p class="project-description">Terminal-based Minesweeper with configurable grid size and mine count, built to explore recursive flood-fill and object-oriented game state management.</p>
+                    <p class="project-description">Terminal-based Minesweeper with configurable grid size and mine count, built to explore recursive flood-fill and OOP game state management.</p>
                     <div class="icons">
                         <i class="devicon-java-plain colored" data-tooltip="Java"></i>
                     </div>
@@ -428,7 +508,7 @@
                     <p class="project_title">Solitaire</p>
                     <p class="project_title">(CLI) C</p>
                     <p class="coming-soon-badge">⏳ Coming Soon</p>
-                    <p class="project-description">Klondike Solitaire running in the terminal, written in C — built to practice manual memory management, pointer arithmetic, and struct-based game logic.</p>
+                    <p class="project-description">Klondike Solitaire in the terminal, written in C — built to practice manual memory management, pointer arithmetic, and struct-based game logic.</p>
                     <div class="icons">
                         <i class="devicon-c-plain colored" data-tooltip="C"></i>
                     </div>
@@ -439,11 +519,12 @@
                     <p class="project_title">Horizontal Scanline</p>
                     <p class="project_title">x86 Assembly</p>
                     <p class="coming-soon-badge">⏳ Coming Soon</p>
-                    <p class="project-description">Low-level screen rendering program written in x86 Assembly that draws horizontal scanlines directly to video memory — an exploration of bare-metal graphics.</p>
+                    <p class="project-description">Low-level screen rendering written in x86 Assembly that draws horizontal scanlines directly to video memory — bare-metal graphics exploration.</p>
                     <div class="icons">
                         <i class="devicon-linux-plain colored" data-tooltip="Linux / x86 ASM"></i>
                     </div>
                 </div>
+
             </div>
         </div>
     </main>
