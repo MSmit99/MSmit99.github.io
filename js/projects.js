@@ -1,43 +1,36 @@
 (function () {
 	window.addEventListener("load", init);
 
-	// Adds click listeners to each project box
 	function init() {
 		let projectBoxes = document.querySelectorAll(".project-box");
 		for (let projectBox of projectBoxes) projectBox.addEventListener("click", openProject);
 	}
 
 	/**
-	 * When a user clicks on the project box div, it will redirect them to the correct project page (github if no page).
-	 * If they click on the github logo, it will only open the github for that project on a separate page.
+	 * When a user clicks on the project box div, it will redirect them to the correct project page.
+	 * If they click the GitHub logo or Live Demo button, those links handle themselves.
 	 */
 	function openProject() {
+		let githubButton = this.querySelector(".github");
+		let liveDemoButton = this.querySelector(".live-demo");
+
+		// Let the anchor tags handle their own clicks
+		if (githubButton && githubButton.matches(":hover")) return;
+		if (liveDemoButton && liveDemoButton.matches(":hover")) return;
+
 		let href = "";
 
-		let githubButton = this.querySelector(".github");
+		switch (this.id) {
+			case "cram_review":
+				return window.open("https://github.com/SamH477/Personal-Study-Website");
 
-		if (githubButton && githubButton.matches(":hover")) {
-			// do not open project since github button was clicked
-		} else {
-			switch (this.id) {
-				case "junk_app": {
-					return window.open("https://github.com/Etown-Computer-Science-Club/2024-solution-challenge-trashtalk");
-				}
+			case "club_hub":
+				return window.open("https://etown-clubhub.web.app/");
 
-				case "cram_review": {
-					return window.open("https://github.com/SamH477/Personal-Study-Website");
-				}
-
-				case "club_hub": {
-					return window.open("https://github.com/Etown-CS310/club_hub");
-				}
-
-				case "jay_wing": {
-					return window.open("https://jaywing.etowndb.com/");
-				}
-			}
-
-			window.location = href;
+			case "jay_wing":
+				return window.open("https://jaywing.etowndb.com/");
 		}
+
+		if (href) window.location = href;
 	}
 })();
