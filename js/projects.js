@@ -3,34 +3,38 @@
 
 	function init() {
 		let projectBoxes = document.querySelectorAll(".project-box");
-		for (let projectBox of projectBoxes) projectBox.addEventListener("click", openProject);
+		for (let projectBox of projectBoxes) {
+			projectBox.addEventListener("click", openProject);
+
+			// Stop anchor clicks from bubbling up to the card listener
+			let anchors = projectBox.querySelectorAll("a");
+			for (let a of anchors) {
+				a.addEventListener("click", function (e) {
+					e.stopPropagation();
+				});
+			}
+		}
 	}
 
 	/**
-	 * When a user clicks on the project box div, it will redirect them to the correct project page.
-	 * If they click the GitHub logo or Live Demo button, those links handle themselves.
+	 * When a user clicks the project card (not an anchor inside it),
+	 * navigate to the best available link:
+	 *   1. Live demo (if present)
+	 *   2. GitHub / repo link (fallback)
+	 * Coming-soon cards are skipped entirely.
 	 */
-	function openProject() {
-		let githubButton = this.querySelector(".github");
-		let liveDemoButton = this.querySelector(".live-demo");
+	function openProject(e) {
+		// If the click originated from inside an anchor, do nothing — let the anchor handle it
+		if (e.target.closest("a")) return;
 
-		// Let the anchor tags handle their own clicks
-		if (githubButton && githubButton.matches(":hover")) return;
-		if (liveDemoButton && liveDemoButton.matches(":hover")) return;
+		// Skip coming-soon cards — they have no destination yet
+		if (this.classList.contains("coming-soon")) return;
 
-		let href = "";
+		let liveDemo = this.querySelector(".live-demo");
+		let github   = this.querySelector(".github");
 
-		switch (this.id) {
-			case "cram_review":
-				return window.open("https://github.com/SamH477/Personal-Study-Website");
+		let destination = (liveDemo && liveDemo.href) || (github && github.href) || null;
 
-			case "club_hub":
-				return window.open("https://etown-clubhub.web.app/");
-
-			case "jay_wing":
-				return window.open("https://jaywing.etowndb.com/");
-		}
-
-		if (href) window.location = href;
+		if (destination) window.open(destination, "_blank", "noopener");
 	}
 })();

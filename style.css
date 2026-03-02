@@ -125,7 +125,7 @@ body {
 }
 
 /* Section Title */
-.section_title{
+.section_title {
     text-align: center;
     font-family: "Noto Sans", "Roboto", sans-serif;
     padding-top: 30px;
@@ -222,7 +222,7 @@ section {
     font-size: 0.8em;
 }
 
-#pass_pigs .project_title{
+#pass_pigs .project_title {
     font-size: 0.8em;
 }
 
@@ -296,13 +296,13 @@ section {
     padding-top: 15px;
 }
 
-/* ── Tech Icon Tooltips ── */
-[data-tooltip] {
+/* ── Tech Icon Tooltips (scoped to project cards only) ── */
+.project-box [data-tooltip] {
     position: relative;
     cursor: default;
 }
 
-[data-tooltip]::after {
+.project-box [data-tooltip]::after {
     content: attr(data-tooltip);
     position: absolute;
     bottom: calc(100% + 8px);
@@ -325,9 +325,18 @@ section {
     z-index: 999;
 }
 
-[data-tooltip]:hover::after {
+/* Tooltip shown on hover or keyboard focus */
+.project-box [data-tooltip]:hover::after,
+.project-box [data-tooltip]:focus-visible::after {
     opacity: 1;
     transform: translateX(-50%) scale(1);
+}
+
+/* Keyboard focus ring — uses outline so it never shifts layout */
+.project-box [data-tooltip]:focus-visible {
+    outline: 2px solid rgba(0, 255, 255, 0.6);
+    outline-offset: 3px;
+    border-radius: 3px;
 }
 
 /* Media Queries */

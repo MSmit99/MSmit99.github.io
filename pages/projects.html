@@ -13,21 +13,28 @@
     <link rel="stylesheet" href="/style.css">
     <style>
         .si-icon { width:40px; height:40px; filter:drop-shadow(0 0 5px rgba(0,255,255,0.6)); transition:transform 0.4s ease,filter 0.3s ease; }
+
         .project-box { position:relative; transition:all 0.4s cubic-bezier(0.175,0.885,0.32,1.275); background:linear-gradient(145deg,#2a2a2a,#1a1a1a); box-shadow:0 4px 15px rgba(0,0,0,0.3); overflow:visible; border-width:3px; padding:20px; opacity:0; animation:fadeInUp 0.6s ease forwards; }
         .project-box:hover { transform:translateY(-12px) scale(1.03); box-shadow:0 20px 50px rgba(160,32,240,0.6),0 10px 30px rgba(0,255,255,0.3),inset 0 0 20px rgba(160,32,240,0.2); border-color:#00ffff; background:linear-gradient(145deg,#3a2a4a,#2a1a3a); }
+
         .icons { display:grid; grid-template-columns:repeat(6,1fr); gap:10px; transition:transform 0.3s ease; max-width:100%; padding:15px 10px; margin:0 auto; position:relative; z-index:2; }
         .project-box:hover .icons { transform:scale(1.05) translateY(-3px); }
         .icons i, .icons .icon-wrap { transition:transform 0.4s ease,filter 0.3s ease; justify-self:center; }
         .project-box:hover .icons i, .project-box:hover .icons .icon-wrap { transform:translateY(-5px) rotate(3deg); filter:drop-shadow(0 0 15px rgba(0,255,255,0.8)) drop-shadow(0 0 25px rgba(160,32,240,0.6)); }
+
         .project_title { transition:all 0.3s ease; position:relative; z-index:2; }
         .project-box:hover .project_title:first-of-type { color:#00ffff; text-shadow:0 0 20px rgba(0,255,255,0.8),0 0 40px rgba(160,32,240,0.6); transform:scale(1.1); }
         .project-box:hover .project_title:nth-of-type(2) { color:#ff00ff; text-shadow:0 0 10px rgba(255,0,255,0.8); }
+
         .github { transition:all 0.3s ease; display:inline-block; position:relative; z-index:2; }
         .project-box:hover .github { transform:scale(1.3) rotate(360deg); color:#00ffff; filter:drop-shadow(0 0 20px rgba(0,255,255,0.8)); }
+
         @keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
         .project-box:nth-child(1){animation-delay:0.1s} .project-box:nth-child(2){animation-delay:0.2s} .project-box:nth-child(3){animation-delay:0.3s} .project-box:nth-child(4){animation-delay:0.4s} .project-box:nth-child(5){animation-delay:0.5s} .project-box:nth-child(6){animation-delay:0.6s} .project-box:nth-child(7){animation-delay:0.7s} .project-box:nth-child(8){animation-delay:0.8s} .project-box:nth-child(9){animation-delay:0.9s} .project-box:nth-child(10){animation-delay:1s} .project-box:nth-child(11){animation-delay:1.1s} .project-box:nth-child(12){animation-delay:1.2s}
+
         .section_title { background:linear-gradient(90deg,#800080,#a020f0,#800080); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; animation:gradientShift 3s ease infinite; background-size:200% auto; font-size:3em; font-weight:bold; }
         @keyframes gradientShift { 0%,100%{background-position:0% center} 50%{background-position:100% center} }
+
         @keyframes float { 0%,100%{transform:translateY(0px)} 50%{transform:translateY(-8px)} }
         .project-box:hover .icons *:nth-child(1) {animation:float 2.5s ease-in-out 0.0s infinite}
         .project-box:hover .icons *:nth-child(2) {animation:float 2.5s ease-in-out 0.2s infinite}
@@ -60,41 +67,11 @@
             transition: none !important;
         }
 
-        /* ── Tooltip styles (works on span.icon-wrap and i elements) ── */
-        .icon-wrap[data-tooltip],
-        i[data-tooltip] {
-            position: relative;
-        }
-        .icon-wrap[data-tooltip]::after,
-        i[data-tooltip]::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: calc(100% + 8px);
-            left: 50%;
-            transform: translateX(-50%) scale(0.85);
-            background: rgba(10,10,15,0.95);
-            color: #00ffff;
-            font-family: "Anonymous Pro", monospace;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            white-space: nowrap;
-            padding: 4px 9px;
-            border-radius: 4px;
-            border: 1px solid rgba(0,255,255,0.35);
-            box-shadow: 0 0 12px rgba(0,255,255,0.25), 0 2px 8px rgba(0,0,0,0.6);
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.18s ease, transform 0.18s ease;
-            z-index: 9999;
-        }
-        .icon-wrap[data-tooltip]:hover::after,
-        i[data-tooltip]:hover::after {
-            opacity: 1;
-            transform: translateX(-50%) scale(1);
-        }
+        /* Pause float animation while reading a tooltip — projects-page only */
         .icon-wrap[data-tooltip]:hover,
-        i[data-tooltip]:hover {
+        .icon-wrap[data-tooltip]:focus-visible,
+        i[data-tooltip]:hover,
+        i[data-tooltip]:focus-visible {
             animation-play-state: paused !important;
         }
 
@@ -121,7 +98,6 @@
             transition: all 0.25s ease;
             white-space: nowrap;
         }
-
         .live-demo:hover {
             background: rgba(0,255,255,0.12);
             color: #fff;
@@ -139,14 +115,8 @@
             margin: 6px 4px 4px;
             transition: color 0.3s ease;
         }
-        .project-box:hover .project-description {
-            color: rgba(255,255,255,0.88);
-        }
-
-        .project-box:hover .live-demo {
-            border-color: #00ffff;
-            box-shadow: 0 0 14px rgba(0,255,255,0.5);
-        }
+        .project-box:hover .project-description { color: rgba(255,255,255,0.88); }
+        .project-box:hover .live-demo { border-color: #00ffff; box-shadow: 0 0 14px rgba(0,255,255,0.5); }
 
         /* ── Coming Soon cards ── */
         .project-box.coming-soon {
@@ -175,32 +145,14 @@
             margin-bottom: 4px;
             transition: color 0.3s ease, border-color 0.3s ease;
         }
-        .project-box.coming-soon:hover .coming-soon-badge {
-            color: #aaa;
-            border-color: #888;
-        }
-        .project-box.coming-soon .project_title {
-            color: #aaa;
-        }
-        .project-box.coming-soon:hover .project_title:first-of-type {
-            color: #ccc;
-            text-shadow: none;
-            transform: scale(1.05);
-        }
-        .project-box.coming-soon:hover .project_title:nth-of-type(2) {
-            color: #999;
-            text-shadow: none;
-        }
-        .project-box.coming-soon .project-description {
-            color: rgba(255,255,255,0.35);
-        }
-        .project-box.coming-soon:hover .project-description {
-            color: rgba(255,255,255,0.55);
-        }
+        .project-box.coming-soon:hover .coming-soon-badge { color: #aaa; border-color: #888; }
+        .project-box.coming-soon .project_title { color: #aaa; }
+        .project-box.coming-soon:hover .project_title:first-of-type { color: #ccc; text-shadow: none; transform: scale(1.05); }
+        .project-box.coming-soon:hover .project_title:nth-of-type(2) { color: #999; text-shadow: none; }
+        .project-box.coming-soon .project-description { color: rgba(255,255,255,0.35); }
+        .project-box.coming-soon:hover .project-description { color: rgba(255,255,255,0.55); }
 
-
-        /* ── Category section headers ── */
-        .category-section { width: 100%; padding: 10px 20px 0; }
+        /* ── Category headers ── */
         .category-header {
             display: flex;
             align-items: center;
@@ -273,18 +225,18 @@
                     <a class="github" href="https://github.com/Etown-CS170/2025-AICA" target="_blank" rel="noopener"><i class="devicon-github-original"></i></a>
                     <p class="project-description">AI-powered email generation platform with Microsoft Outlook integration — compose context-aware business emails with customizable tone, audience, and templates via OpenAI.</p>
                     <div class="icons">
-                        <span class="icon-wrap" data-tooltip="Angular"><img src="/global-media/angular.svg" alt="Angular" class="si-icon"></span>
-                        <i class="devicon-typescript-plain colored" data-tooltip="TypeScript"></i>
-                        <span class="icon-wrap" data-tooltip="RxJS"><img src="/global-media/rxjs.svg" alt="RxJS" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="Tailwind CSS"><img src="/global-media/tailwindcss.svg" alt="Tailwind CSS" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="Lucide Angular"><img src="/global-media/lucide.svg" alt="Lucide Angular" class="si-icon"></span>
-                        <i class="devicon-nodejs-plain colored si-icon" data-tooltip="Node.js"></i>
-                        <i class="devicon-express-original colored" data-tooltip="Express.js"></i>
-                        <span class="icon-wrap" data-tooltip="OpenAI API"><img src="/global-media/openai.svg" alt="OpenAI" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="LangChain"><img src="/global-media/langchain.svg" alt="LangChain" class="si-icon"></span>
-                        <i class="devicon-mongodb-plain colored" data-tooltip="MongoDB"></i>
-                        <span class="icon-wrap" data-tooltip="Auth0"><img src="/global-media/auth0.svg" alt="Auth0" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="Microsoft Graph API"><img src="/global-media/microsoftGraph.svg" alt="Microsoft Graph API" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="Angular" tabindex="0"><img src="/global-media/angular.svg" alt="Angular" class="si-icon"></span>
+                        <i class="devicon-typescript-plain colored" data-tooltip="TypeScript" role="img" aria-label="TypeScript" tabindex="0"></i>
+                        <span class="icon-wrap" data-tooltip="RxJS" tabindex="0"><img src="/global-media/rxjs.svg" alt="RxJS" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="Tailwind CSS" tabindex="0"><img src="/global-media/tailwindcss.svg" alt="Tailwind CSS" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="Lucide Angular" tabindex="0"><img src="/global-media/lucide.svg" alt="Lucide Angular" class="si-icon"></span>
+                        <i class="devicon-nodejs-plain colored si-icon" data-tooltip="Node.js" role="img" aria-label="Node.js" tabindex="0"></i>
+                        <i class="devicon-express-original colored" data-tooltip="Express.js" role="img" aria-label="Express.js" tabindex="0"></i>
+                        <span class="icon-wrap" data-tooltip="OpenAI API" tabindex="0"><img src="/global-media/openai.svg" alt="OpenAI API" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="LangChain" tabindex="0"><img src="/global-media/langchain.svg" alt="LangChain" class="si-icon"></span>
+                        <i class="devicon-mongodb-plain colored" data-tooltip="MongoDB" role="img" aria-label="MongoDB" tabindex="0"></i>
+                        <span class="icon-wrap" data-tooltip="Auth0" tabindex="0"><img src="/global-media/auth0.svg" alt="Auth0" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="Microsoft Graph API" tabindex="0"><img src="/global-media/microsoftGraph.svg" alt="Microsoft Graph API" class="si-icon"></span>
                     </div>
                 </div>
 
@@ -296,17 +248,17 @@
                     <a class="github" href="https://github.com/Etown-CS310/Story-Forge" target="_blank" rel="noopener"><i class="devicon-github-original"></i></a>
                     <p class="project-description">Collaborative interactive storytelling platform where AI assists with plot branching, character dialogue, and narrative consistency, visualized as a live story graph.</p>
                     <div class="icons">
-                        <i class="devicon-react-original colored si-icon" data-tooltip="React"></i>
-                        <i class="devicon-typescript-plain colored" data-tooltip="TypeScript"></i>
-                        <span class="icon-wrap" data-tooltip="Vite"><img src="/global-media/vite.svg" alt="Vite" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="Tailwind CSS"><img src="/global-media/tailwindcss.svg" alt="Tailwind CSS" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="shadcn/ui"><img src="/global-media/shadcnui.svg" alt="Shadcn" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="Lucide React"><img src="/global-media/lucide.svg" alt="Lucide React" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="Convex"><img src="/global-media/convex.svg" alt="Convex" class="si-icon"></span>
-                        <i class="devicon-nodejs-plain colored si-icon" data-tooltip="Node.js"></i>
-                        <span class="icon-wrap" data-tooltip="OpenAI API"><img src="/global-media/openai.svg" alt="OpenAI" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="Mermaid.js"><img src="/global-media/mermaid.svg" alt="Mermaid" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="WorkOS"><img src="/global-media/workos.svg" alt="WorkOS" class="si-icon"></span>
+                        <i class="devicon-react-original colored si-icon" data-tooltip="React" role="img" aria-label="React" tabindex="0"></i>
+                        <i class="devicon-typescript-plain colored" data-tooltip="TypeScript" role="img" aria-label="TypeScript" tabindex="0"></i>
+                        <span class="icon-wrap" data-tooltip="Vite" tabindex="0"><img src="/global-media/vite.svg" alt="Vite" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="Tailwind CSS" tabindex="0"><img src="/global-media/tailwindcss.svg" alt="Tailwind CSS" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="shadcn/ui" tabindex="0"><img src="/global-media/shadcnui.svg" alt="shadcn/ui" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="Lucide React" tabindex="0"><img src="/global-media/lucide.svg" alt="Lucide React" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="Convex" tabindex="0"><img src="/global-media/convex.svg" alt="Convex" class="si-icon"></span>
+                        <i class="devicon-nodejs-plain colored si-icon" data-tooltip="Node.js" role="img" aria-label="Node.js" tabindex="0"></i>
+                        <span class="icon-wrap" data-tooltip="OpenAI API" tabindex="0"><img src="/global-media/openai.svg" alt="OpenAI API" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="Mermaid.js" tabindex="0"><img src="/global-media/mermaid.svg" alt="Mermaid.js" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="WorkOS" tabindex="0"><img src="/global-media/workos.svg" alt="WorkOS" class="si-icon"></span>
                     </div>
                 </div>
 
@@ -320,15 +272,15 @@
                     </a>
                     <p class="project-description">Autonomous AI agent built to solve HuggingFace&#x27;s GAIA benchmark — performs multi-step reasoning, web research, and file analysis across PDFs, images, Excel, and CSV.</p>
                     <div class="icons">
-                        <i class="devicon-python-plain colored si-icon" data-tooltip="Python"></i>
-                        <span class="icon-wrap" data-tooltip="Gradio"><img src="/global-media/gradio.svg" alt="Gradio" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="Anthropic Claude"><img src="/global-media/anthropic.svg" alt="Claude" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="OpenAI Whisper"><img src="/global-media/openai.svg" alt="OpenAI Whisper" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="Brave Search API"><img src="/global-media/brave.svg" alt="Brave Search" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="Wikipedia API"><img src="/global-media/wikipedia.svg" alt="Wikipedia" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="YouTube API"><img src="/global-media/youtube.svg" alt="YouTube API" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="BeautifulSoup"><img src="/global-media/beautifulsoup.svg" alt="BeautifulSoup" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="Pandas"><img src="/global-media/pandas.svg" alt="Pandas" class="si-icon"></span>
+                        <i class="devicon-python-plain colored si-icon" data-tooltip="Python" role="img" aria-label="Python" tabindex="0"></i>
+                        <span class="icon-wrap" data-tooltip="Gradio" tabindex="0"><img src="/global-media/gradio.svg" alt="Gradio" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="Anthropic Claude" tabindex="0"><img src="/global-media/anthropic.svg" alt="Anthropic Claude" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="OpenAI Whisper" tabindex="0"><img src="/global-media/openai.svg" alt="OpenAI Whisper" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="Brave Search API" tabindex="0"><img src="/global-media/brave.svg" alt="Brave Search API" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="Wikipedia API" tabindex="0"><img src="/global-media/wikipedia.svg" alt="Wikipedia API" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="YouTube API" tabindex="0"><img src="/global-media/youtube.svg" alt="YouTube API" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="BeautifulSoup" tabindex="0"><img src="/global-media/beautifulsoup.svg" alt="BeautifulSoup" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="Pandas" tabindex="0"><img src="/global-media/pandas.svg" alt="Pandas" class="si-icon"></span>
                     </div>
                 </div>
 
@@ -339,12 +291,12 @@
                     <a class="github" href="https://github.com/SamH477/Personal-Study-Website" target="_blank" rel="noopener"><i class="devicon-github-original"></i></a>
                     <p class="project-description">AI-powered study tool built during a coding challenge — generates practice questions and flashcards from uploaded course material to streamline exam prep.</p>
                     <div class="icons">
-                        <i class="devicon-python-plain colored si-icon" data-tooltip="Python"></i>
-                        <i class="devicon-flask-original colored si-icon" data-tooltip="Flask"></i>
-                        <span class="icon-wrap" data-tooltip="OpenAI API"><img src="/global-media/openai.svg" alt="OpenAI" class="si-icon"></span>
-                        <i class="devicon-html5-plain colored si-icon" data-tooltip="HTML5"></i>
-                        <i class="devicon-css3-plain colored si-icon" data-tooltip="CSS3"></i>
-                        <i class="devicon-javascript-plain colored" data-tooltip="JavaScript"></i>
+                        <i class="devicon-python-plain colored si-icon" data-tooltip="Python" role="img" aria-label="Python" tabindex="0"></i>
+                        <i class="devicon-flask-original colored si-icon" data-tooltip="Flask" role="img" aria-label="Flask" tabindex="0"></i>
+                        <span class="icon-wrap" data-tooltip="OpenAI API" tabindex="0"><img src="/global-media/openai.svg" alt="OpenAI API" class="si-icon"></span>
+                        <i class="devicon-html5-plain colored si-icon" data-tooltip="HTML5" role="img" aria-label="HTML5" tabindex="0"></i>
+                        <i class="devicon-css3-plain colored si-icon" data-tooltip="CSS3" role="img" aria-label="CSS3" tabindex="0"></i>
+                        <i class="devicon-javascript-plain colored" data-tooltip="JavaScript" role="img" aria-label="JavaScript" tabindex="0"></i>
                     </div>
                 </div>
 
@@ -365,16 +317,16 @@
                     </div>
                     <p class="project-description">Centralized tutoring platform with secure messaging, profile pages, and an interactive calendar. Winner of the Outstanding Software Engineering Project Award (2024–25).</p>
                     <div class="icons">
-                        <i class="devicon-php-plain colored si-icon" data-tooltip="PHP"></i>
-                        <span class="icon-wrap" data-tooltip="MySQL"><img src="/global-media/mysql.svg" alt="MySQL" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="Apache"><img src="/global-media/apache.svg" alt="Apache" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="XAMPP"><img src="/global-media/xampp.svg" alt="XAMPP" class="si-icon"></span>
-                        <i class="devicon-html5-plain colored si-icon" data-tooltip="HTML5"></i>
-                        <i class="devicon-css3-plain colored si-icon" data-tooltip="CSS3"></i>
-                        <i class="devicon-javascript-plain colored" data-tooltip="JavaScript"></i>
-                        <span class="icon-wrap" data-tooltip="Bootstrap"><img src="/global-media/bootstrap.svg" alt="Bootstrap" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="FullCalendar"><img src="/global-media/fullcalendar.svg" alt="FullCalendar" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="Tailwind CSS"><img src="/global-media/tailwindcss.svg" alt="Tailwind CSS" class="si-icon"></span>
+                        <i class="devicon-php-plain colored si-icon" data-tooltip="PHP" role="img" aria-label="PHP" tabindex="0"></i>
+                        <span class="icon-wrap" data-tooltip="MySQL" tabindex="0"><img src="/global-media/mysql.svg" alt="MySQL" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="Apache" tabindex="0"><img src="/global-media/apache.svg" alt="Apache" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="XAMPP" tabindex="0"><img src="/global-media/xampp.svg" alt="XAMPP" class="si-icon"></span>
+                        <i class="devicon-html5-plain colored si-icon" data-tooltip="HTML5" role="img" aria-label="HTML5" tabindex="0"></i>
+                        <i class="devicon-css3-plain colored si-icon" data-tooltip="CSS3" role="img" aria-label="CSS3" tabindex="0"></i>
+                        <i class="devicon-javascript-plain colored" data-tooltip="JavaScript" role="img" aria-label="JavaScript" tabindex="0"></i>
+                        <span class="icon-wrap" data-tooltip="Bootstrap" tabindex="0"><img src="/global-media/bootstrap.svg" alt="Bootstrap" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="FullCalendar" tabindex="0"><img src="/global-media/fullcalendar.svg" alt="FullCalendar" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="Tailwind CSS" tabindex="0"><img src="/global-media/tailwindcss.svg" alt="Tailwind CSS" class="si-icon"></span>
                     </div>
                 </div>
 
@@ -385,19 +337,19 @@
                     <p class="project_title">CS310</p>
                     <div class="project-links">
                         <a class="github" href="https://github.com/Etown-CS310/club_hub" target="_blank" rel="noopener"><i class="devicon-github-original"></i></a>
-                        <a class="live-demo" href="YOUR_CLUBHUB_URL_HERE" target="_blank" rel="noopener">▶ Live Demo</a>
+                        <a class="live-demo" href="https://etown-clubhub.web.app/" target="_blank" rel="noopener">▶ Live Demo</a>
                     </div>
                     <p class="project-description">Centralized hub for managing school clubs with customizable pages, secure logins, and an interactive calendar. Nominated for Capstone Project of the Year (2024–25).</p>
                     <div class="icons">
-                        <i class="devicon-html5-plain colored" data-tooltip="HTML5"></i>
-                        <i class="devicon-css3-plain colored" data-tooltip="CSS3"></i>
-                        <i class="devicon-javascript-plain colored" data-tooltip="JavaScript"></i>
-                        <span class="icon-wrap" data-tooltip="Bootstrap"><img src="/global-media/bootstrap.svg" alt="Bootstrap" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="FullCalendar"><img src="/global-media/fullcalendar.svg" alt="FullCalendar" class="si-icon"></span>
-                        <i class="devicon-nodejs-plain colored si-icon" data-tooltip="Node.js"></i>
-                        <i class="devicon-express-original colored" data-tooltip="Express.js"></i>
-                        <i class="devicon-firebase-plain colored si-icon" data-tooltip="Firebase"></i>
-                        <i class="devicon-googlecloud-plain colored si-icon" data-tooltip="Google Cloud"></i>
+                        <i class="devicon-html5-plain colored" data-tooltip="HTML5" role="img" aria-label="HTML5" tabindex="0"></i>
+                        <i class="devicon-css3-plain colored" data-tooltip="CSS3" role="img" aria-label="CSS3" tabindex="0"></i>
+                        <i class="devicon-javascript-plain colored" data-tooltip="JavaScript" role="img" aria-label="JavaScript" tabindex="0"></i>
+                        <span class="icon-wrap" data-tooltip="Bootstrap" tabindex="0"><img src="/global-media/bootstrap.svg" alt="Bootstrap" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="FullCalendar" tabindex="0"><img src="/global-media/fullcalendar.svg" alt="FullCalendar" class="si-icon"></span>
+                        <i class="devicon-nodejs-plain colored si-icon" data-tooltip="Node.js" role="img" aria-label="Node.js" tabindex="0"></i>
+                        <i class="devicon-express-original colored" data-tooltip="Express.js" role="img" aria-label="Express.js" tabindex="0"></i>
+                        <i class="devicon-firebase-plain colored si-icon" data-tooltip="Firebase" role="img" aria-label="Firebase" tabindex="0"></i>
+                        <i class="devicon-googlecloud-plain colored si-icon" data-tooltip="Google Cloud" role="img" aria-label="Google Cloud" tabindex="0"></i>
                     </div>
                 </div>
 
@@ -408,11 +360,11 @@
                     <a class="github" href="https://github.com/MSmit99/PassThePigsScorer" target="_blank" rel="noopener"><i class="devicon-github-original"></i></a>
                     <p class="project-description">Responsive web app for scoring Pass the Pigs, supporting up to 8 players with real-time score tracking, game history, and configurable win conditions.</p>
                     <div class="icons">
-                        <i class="devicon-react-original colored si-icon" data-tooltip="React"></i>
-                        <i class="devicon-javascript-plain colored" data-tooltip="JavaScript"></i>
-                        <i class="devicon-nodejs-plain colored si-icon" data-tooltip="Node.js"></i>
-                        <span class="icon-wrap" data-tooltip="Tailwind CSS"><img src="/global-media/tailwindcss.svg" alt="Tailwind CSS" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="Lucide React"><img src="/global-media/lucide.svg" alt="Lucide React" class="si-icon"></span>
+                        <i class="devicon-react-original colored si-icon" data-tooltip="React" role="img" aria-label="React" tabindex="0"></i>
+                        <i class="devicon-javascript-plain colored" data-tooltip="JavaScript" role="img" aria-label="JavaScript" tabindex="0"></i>
+                        <i class="devicon-nodejs-plain colored si-icon" data-tooltip="Node.js" role="img" aria-label="Node.js" tabindex="0"></i>
+                        <span class="icon-wrap" data-tooltip="Tailwind CSS" tabindex="0"><img src="/global-media/tailwindcss.svg" alt="Tailwind CSS" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="Lucide React" tabindex="0"><img src="/global-media/lucide.svg" alt="Lucide React" class="si-icon"></span>
                     </div>
                 </div>
 
@@ -430,15 +382,15 @@
                     <a class="github" href="https://github.com/NolanP2003/FlightDelay" target="_blank" rel="noopener"><i class="devicon-github-original"></i></a>
                     <p class="project-description">Real-time flight delay prediction pipeline using Apache Kafka and Spark Streaming, processing 1.16M+ samples to achieve 93.69% accuracy across three ML models.</p>
                     <div class="icons">
-                        <i class="devicon-python-plain colored si-icon" data-tooltip="Python"></i>
-                        <i class="devicon-flask-original colored si-icon" data-tooltip="Flask"></i>
-                        <span class="icon-wrap" data-tooltip="Apache Spark"><img src="/global-media/apachespark.svg" alt="Apache Spark" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="Apache Kafka"><img src="/global-media/apachekafka.svg" alt="Apache Kafka" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="Apache Parquet"><img src="/global-media/apacheparquet.svg" alt="Apache Parquet" class="si-icon"></span>
-                        <i class="devicon-googlecloud-plain colored si-icon" data-tooltip="Google Cloud"></i>
-                        <i class="devicon-javascript-plain colored" data-tooltip="JavaScript"></i>
-                        <i class="devicon-html5-plain colored si-icon" data-tooltip="HTML5"></i>
-                        <i class="devicon-css3-plain colored si-icon" data-tooltip="CSS3"></i>
+                        <i class="devicon-python-plain colored si-icon" data-tooltip="Python" role="img" aria-label="Python" tabindex="0"></i>
+                        <i class="devicon-flask-original colored si-icon" data-tooltip="Flask" role="img" aria-label="Flask" tabindex="0"></i>
+                        <span class="icon-wrap" data-tooltip="Apache Spark" tabindex="0"><img src="/global-media/apachespark.svg" alt="Apache Spark" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="Apache Kafka" tabindex="0"><img src="/global-media/apachekafka.svg" alt="Apache Kafka" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="Apache Parquet" tabindex="0"><img src="/global-media/apacheparquet.svg" alt="Apache Parquet" class="si-icon"></span>
+                        <i class="devicon-googlecloud-plain colored si-icon" data-tooltip="Google Cloud" role="img" aria-label="Google Cloud" tabindex="0"></i>
+                        <i class="devicon-javascript-plain colored" data-tooltip="JavaScript" role="img" aria-label="JavaScript" tabindex="0"></i>
+                        <i class="devicon-html5-plain colored si-icon" data-tooltip="HTML5" role="img" aria-label="HTML5" tabindex="0"></i>
+                        <i class="devicon-css3-plain colored si-icon" data-tooltip="CSS3" role="img" aria-label="CSS3" tabindex="0"></i>
                     </div>
                 </div>
 
@@ -449,17 +401,17 @@
                     <a class="github" href="https://github.com/MSmit99/SleepFactors" target="_blank" rel="noopener"><i class="devicon-github-original"></i></a>
                     <p class="project-description">Data science research project using Python ML models (Random Forest, SVM, PCA) to rank the most influential factors affecting sleep quality and surface personalized insights.</p>
                     <div class="icons">
-                        <i class="devicon-python-plain colored si-icon" data-tooltip="Python"></i>
-                        <i class="devicon-javascript-plain colored" data-tooltip="JavaScript"></i>
-                        <span class="icon-wrap" data-tooltip="Chart.js"><img src="/global-media/chartdotjs.svg" alt="Chart.js" class="si-icon"></span>
-                        <i class="devicon-html5-plain colored si-icon" data-tooltip="HTML5"></i>
-                        <i class="devicon-css3-plain colored si-icon" data-tooltip="CSS3"></i>
-                        <span class="icon-wrap" data-tooltip="Pandas"><img src="/global-media/pandas.svg" alt="Pandas" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="NumPy"><img src="/global-media/numpy.svg" alt="NumPy" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="Scikit-Learn"><img src="/global-media/scikitlearn.svg" alt="Scikit-Learn" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="Seaborn"><img src="/global-media/seaborn.svg" alt="Seaborn" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="Matplotlib"><img src="/global-media/matplotlib.svg" alt="Matplotlib" class="si-icon"></span>
-                        <span class="icon-wrap" data-tooltip="SciPy"><img src="/global-media/scipy.svg" alt="SciPy" class="si-icon"></span>
+                        <i class="devicon-python-plain colored si-icon" data-tooltip="Python" role="img" aria-label="Python" tabindex="0"></i>
+                        <i class="devicon-javascript-plain colored" data-tooltip="JavaScript" role="img" aria-label="JavaScript" tabindex="0"></i>
+                        <span class="icon-wrap" data-tooltip="Chart.js" tabindex="0"><img src="/global-media/chartdotjs.svg" alt="Chart.js" class="si-icon"></span>
+                        <i class="devicon-html5-plain colored si-icon" data-tooltip="HTML5" role="img" aria-label="HTML5" tabindex="0"></i>
+                        <i class="devicon-css3-plain colored si-icon" data-tooltip="CSS3" role="img" aria-label="CSS3" tabindex="0"></i>
+                        <span class="icon-wrap" data-tooltip="Pandas" tabindex="0"><img src="/global-media/pandas.svg" alt="Pandas" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="NumPy" tabindex="0"><img src="/global-media/numpy.svg" alt="NumPy" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="Scikit-Learn" tabindex="0"><img src="/global-media/scikitlearn.svg" alt="Scikit-Learn" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="Seaborn" tabindex="0"><img src="/global-media/seaborn.svg" alt="Seaborn" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="Matplotlib" tabindex="0"><img src="/global-media/matplotlib.svg" alt="Matplotlib" class="si-icon"></span>
+                        <span class="icon-wrap" data-tooltip="SciPy" tabindex="0"><img src="/global-media/scipy.svg" alt="SciPy" class="si-icon"></span>
                     </div>
                 </div>
 
@@ -476,8 +428,8 @@
                     <a class="github" href="https://github.com/MSmit99/PassThePigsChatScorer" target="_blank" rel="noopener"><i class="devicon-github-original"></i></a>
                     <p class="project-description">The original CLI version of the Pass the Pigs scorer — runs in the terminal via Node.js with chat-style score input.</p>
                     <div class="icons">
-                        <i class="devicon-javascript-plain colored" data-tooltip="JavaScript"></i>
-                        <i class="devicon-nodejs-plain colored si-icon" data-tooltip="Node.js"></i>
+                        <i class="devicon-javascript-plain colored" data-tooltip="JavaScript" role="img" aria-label="JavaScript" tabindex="0"></i>
+                        <i class="devicon-nodejs-plain colored si-icon" data-tooltip="Node.js" role="img" aria-label="Node.js" tabindex="0"></i>
                     </div>
                 </div>
 
@@ -488,7 +440,7 @@
                     <p class="coming-soon-badge">⏳ Coming Soon</p>
                     <p class="project-description">Ultimate Tic-Tac-Toe variant on a 9×9 meta-board — each move determines which sub-board your opponent must play in next.</p>
                     <div class="icons">
-                        <i class="devicon-java-plain colored" data-tooltip="Java"></i>
+                        <i class="devicon-java-plain colored" data-tooltip="Java" role="img" aria-label="Java" tabindex="0"></i>
                     </div>
                 </div>
 
@@ -499,7 +451,7 @@
                     <p class="coming-soon-badge">⏳ Coming Soon</p>
                     <p class="project-description">Terminal-based Minesweeper with configurable grid size and mine count, built to explore recursive flood-fill and OOP game state management.</p>
                     <div class="icons">
-                        <i class="devicon-java-plain colored" data-tooltip="Java"></i>
+                        <i class="devicon-java-plain colored" data-tooltip="Java" role="img" aria-label="Java" tabindex="0"></i>
                     </div>
                 </div>
 
@@ -510,7 +462,7 @@
                     <p class="coming-soon-badge">⏳ Coming Soon</p>
                     <p class="project-description">Klondike Solitaire in the terminal, written in C — built to practice manual memory management, pointer arithmetic, and struct-based game logic.</p>
                     <div class="icons">
-                        <i class="devicon-c-plain colored" data-tooltip="C"></i>
+                        <i class="devicon-c-plain colored" data-tooltip="C" role="img" aria-label="C" tabindex="0"></i>
                     </div>
                 </div>
 
@@ -521,7 +473,7 @@
                     <p class="coming-soon-badge">⏳ Coming Soon</p>
                     <p class="project-description">Low-level screen rendering written in x86 Assembly that draws horizontal scanlines directly to video memory — bare-metal graphics exploration.</p>
                     <div class="icons">
-                        <i class="devicon-linux-plain colored" data-tooltip="Linux / x86 ASM"></i>
+                        <i class="devicon-linux-plain colored" data-tooltip="Linux / x86 ASM" role="img" aria-label="Linux / x86 ASM" tabindex="0"></i>
                     </div>
                 </div>
 
