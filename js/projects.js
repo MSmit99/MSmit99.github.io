@@ -1,43 +1,40 @@
 (function () {
 	window.addEventListener("load", init);
 
-	// Adds click listeners to each project box
 	function init() {
 		let projectBoxes = document.querySelectorAll(".project-box");
-		for (let projectBox of projectBoxes) projectBox.addEventListener("click", openProject);
+		for (let projectBox of projectBoxes) {
+			projectBox.addEventListener("click", openProject);
+
+			// Stop anchor clicks from bubbling up to the card listener
+			let anchors = projectBox.querySelectorAll("a");
+			for (let a of anchors) {
+				a.addEventListener("click", function (e) {
+					e.stopPropagation();
+				});
+			}
+		}
 	}
 
 	/**
-	 * When a user clicks on the project box div, it will redirect them to the correct project page (github if no page).
-	 * If they click on the github logo, it will only open the github for that project on a separate page.
+	 * When a user clicks the project card (not an anchor inside it),
+	 * navigate to the best available link:
+	 *   1. Live demo (if present)
+	 *   2. GitHub / repo link (fallback)
+	 * Coming-soon cards are skipped entirely.
 	 */
-	function openProject() {
-		let href = "";
+	function openProject(e) {
+		// If the click originated from inside an anchor, do nothing — let the anchor handle it
+		if (e.target.closest("a")) return;
 
-		let githubButton = this.querySelector(".github");
+		// Skip coming-soon cards — they have no destination yet
+		if (this.classList.contains("coming-soon")) return;
 
-		if (githubButton && githubButton.matches(":hover")) {
-			// do not open project since github button was clicked
-		} else {
-			switch (this.id) {
-				case "junk_app": {
-					return window.open("https://github.com/Etown-Computer-Science-Club/2024-solution-challenge-trashtalk");
-				}
+		let liveDemo = this.querySelector(".live-demo");
+		let github   = this.querySelector(".github");
 
-				case "cram_review": {
-					return window.open("https://github.com/SamH477/Personal-Study-Website");
-				}
+		let destination = (liveDemo && liveDemo.href) || (github && github.href) || null;
 
-				case "club_hub": {
-					return window.open("https://github.com/Etown-CS310/club_hub");
-				}
-
-				case "jay_wing": {
-					return window.open("https://jaywing.etowndb.com/");
-				}
-			}
-
-			window.location = href;
-		}
+		if (destination) window.open(destination, "_blank", "noopener");
 	}
 })();
